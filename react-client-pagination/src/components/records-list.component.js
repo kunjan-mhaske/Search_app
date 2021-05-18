@@ -67,11 +67,43 @@ class RecordsList extends Component {
       }
       return params;
   }
+  // pagination method 2
+  getRequestParams2(searchCity, searchState, page, pageSize){
+    let params = {};
+    if (searchCity){
+        params["school_city"] = searchCity;
+    }
+    if (searchState){
+      params["school_state"] = searchState;
+    }
+    if (page){
+        params["page"] = page-1;
+    }
+    if (pageSize){
+        params["size"] = pageSize;
+    }
+    return params;
+}
+// pagination method 3
+getRequestParams3(searchZip, page, pageSize){
+  let params = {};
+  if (searchZip){
+      params["school_zip"] = searchZip;
+  }
+  if (page){
+      params["page"] = page-1;
+  }
+  if (pageSize){
+      params["size"] = pageSize;
+  }
+  return params;
+}
 
 
   retrieveRecords() {
     const { searchName, page, pageSize } = this.state;
     const params = this.getRequestParams(searchName, page, pageSize);
+    // console.log('Params for retrievrecords:',params);
 
     RecordDataService.findByName(params)
       .then(response => {
@@ -82,6 +114,7 @@ class RecordsList extends Component {
           count: totalPages
         });
         console.log(response.data);
+        // console.log('state:',this.state);
       })
       .catch(e => {
         console.log(e);
@@ -128,10 +161,16 @@ class RecordsList extends Component {
   }
 
   searchCityState() {
-    RecordDataService.findByCityState(this.state.searchCity, this.state.searchState)
+    const { searchCity, searchState, page, pageSize } = this.state;
+    const params = this.getRequestParams2(searchCity, searchState, page, pageSize);
+
+    RecordDataService.findByCityState(params)
       .then(response => {
+        const { records, totalPages } = response.data;
+
         this.setState({
-          records: response.data
+          records: records,
+          count: totalPages
         });
         console.log(response.data);
       })
@@ -139,11 +178,18 @@ class RecordsList extends Component {
         console.log(e);
       });
   }
+
   searchZip() {
-    RecordDataService.findByZip(this.state.searchZip)
+    const { searchZip, page, pageSize } = this.state;
+    const params = this.getRequestParams3(searchZip, page, pageSize);
+
+    RecordDataService.findByZip(params)
       .then(response => {
-        this.setState({
-          records: response.data
+        const { records, totalPages } = response.data;
+
+        this.setState({          
+          records: records,
+          count: totalPages
         });
         console.log(response.data);
       })
@@ -205,6 +251,11 @@ class RecordsList extends Component {
           </div>
         </div>
 
+      {/* Comment for FrontEnd developer:  */}
+      {/* We are using this.retrieveRecords method for search using school name */}
+      {/* For search using ZIP: use this.searchZip()   and for search using City+State: use this.searchCityState() */}
+      {/* And create this.onChangeSearchZip, this.onChangeSearchCityAndState methods to set the state */}
+
         <div className="col-md-6">
           <h4>Schools List</h4>
 
@@ -241,11 +292,11 @@ class RecordsList extends Component {
                   onClick={() => this.setActiveRecord(record, index)}
                   key={index}
                 >
-                  {record.school_name}
+                  {record.School_Name}
                 </li>
               ))}
           </ul>
-          <Button
+          {/* <Button
               className={`${classes.button} ${classes.removeAll}`}
               size="small"
               color="secondary"
@@ -253,7 +304,7 @@ class RecordsList extends Component {
               onClick={this.removeAllRecords}
             >
               Remove All
-          </Button>
+          </Button> */}
         </div>
 
         <Grid item md={8}>
@@ -264,35 +315,35 @@ class RecordsList extends Component {
                   <label>
                     <strong>Name:</strong>
                   </label>{" "}
-                  {currentRecord.school_name}
+                  {currentRecord.School_Name}
                 </div>
                 
                 <div className={classes.detail}>
                   <label>
                     <strong>City:</strong>
                   </label>{" "}
-                  {currentRecord.school_city}
+                  {currentRecord.City}
                 </div>
 
                 <div className={classes.detail}>
                   <label>
                     <strong>State:</strong>
                   </label>{" "}
-                  {currentRecord.school_state}
+                  {currentRecord.State}
                 </div>
 
                 <div className={classes.detail}>
                   <label>
                     <strong>Zip:</strong>
                   </label>{" "}
-                  {currentRecord.school_zip}
+                  {currentRecord.Zip}
                 </div>
 
                 <div className={classes.detail}>
                   <label>
                     <strong>URL:</strong>
                   </label>{" "}
-                  {<a href={currentRecord.school_url}>Click here</a>}
+                  {<a href={currentRecord.URL}>Click here</a>}
                   {/* {currentRecord.school_url} */}
                 </div>
 

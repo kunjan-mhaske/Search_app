@@ -23,13 +23,16 @@ class RecordDataService {
     //     return http.get(`/records?school_name=${name}`);
     // }
     findByName(params){
-        return http.get("/records?", params);
+        const { school_name, size, page } = params;
+        return http.get(`/records?school_name=${school_name}&size=${size}&page=${page}`);
     }
-    findByCityState(city, state){
-        return http.get(`/records/Schools?school_city=${city}&school_state=${state}`);
+    findByCityState(params){
+        const { school_city, school_state, size, page } = params;
+        return http.get(`/records/Schools?school_city=${school_city}&school_state=${school_state}&size=${size}&page=${page}`);
     }
-    findByZip(zip){
-        return http.get(`/records/SchoolsZip?school_zip=${zip}`);
+    findByZip(params){
+        const { school_zip, size, page } = params;
+        return http.get(`/records/SchoolsZip?school_zip=${school_zip}&size=${size}&page=${page}`);
     }
 }
 

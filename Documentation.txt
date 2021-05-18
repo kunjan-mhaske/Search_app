@@ -85,7 +85,7 @@ https://bezkoder.com/react-pagination-material-ui/
     - 
 
 
-Run server: node server.js
-then run app: npm start
+Run server in backend folder: node server.js
+Run client in frontend folder: npm start
 
 
