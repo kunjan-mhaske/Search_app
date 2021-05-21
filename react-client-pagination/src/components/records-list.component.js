@@ -12,6 +12,9 @@ class RecordsList extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchName = this.onChangeSearchName.bind(this);
+    this.onChangeCity = this.onChangeCity.bind(this);
+    this.onChangeState = this.onChangeState.bind(this);
+    this.onChangeZip = this.onChangeZip.bind(this);
     this.retrieveRecords = this.retrieveRecords.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveRecord = this.setActiveRecord.bind(this);
@@ -26,12 +29,12 @@ class RecordsList extends Component {
 
     this.state = {
       records: [],
-      currentRecord: null,
+      currentRecord: '',
       currentIndex: -1,
       searchName: "",
       searchCity: "",
       searchState: "",
-      searchZip: 0,
+      searchZip: '',
 
       page: 1,
       count: 0,
@@ -52,52 +55,73 @@ class RecordsList extends Component {
       searchName: searchName
     });
   }
+  onChangeCity(e) {
+    const searchCity = e.target.value;
+
+    this.setState({
+      searchCity: searchCity
+    });
+  }
+  onChangeState(e) {
+    const searchState = e.target.value;
+
+    this.setState({
+      searchState: searchState
+    });
+  }
+  onChangeZip(e) {
+    const searchZip = e.target.value;
+
+    this.setState({
+      searchZip: searchZip
+    });
+  }
 
   // pagination method 1
-  getRequestParams(searchName, page, pageSize){
-      let params = {};
-      if (searchName){
-          params["school_name"] = searchName;
-      }
-      if (page){
-          params["page"] = page-1;
-      }
-      if (pageSize){
-          params["size"] = pageSize;
-      }
-      return params;
-  }
-  // pagination method 2
-  getRequestParams2(searchCity, searchState, page, pageSize){
+  getRequestParams(searchName, page, pageSize) {
     let params = {};
-    if (searchCity){
-        params["school_city"] = searchCity;
+    if (searchName) {
+      params["school_name"] = searchName;
     }
-    if (searchState){
-      params["school_state"] = searchState;
+    if (page) {
+      params["page"] = page - 1;
     }
-    if (page){
-        params["page"] = page-1;
-    }
-    if (pageSize){
-        params["size"] = pageSize;
+    if (pageSize) {
+      params["size"] = pageSize;
     }
     return params;
-}
-// pagination method 3
-getRequestParams3(searchZip, page, pageSize){
-  let params = {};
-  if (searchZip){
-      params["school_zip"] = searchZip;
   }
-  if (page){
-      params["page"] = page-1;
-  }
-  if (pageSize){
+  // pagination method 2
+  getRequestParams2(searchCity, searchState, page, pageSize) {
+    let params = {};
+    if (searchCity) {
+      params["school_city"] = searchCity;
+    }
+    if (searchState) {
+      params["school_state"] = searchState;
+    }
+    if (page) {
+      params["page"] = page - 1;
+    }
+    if (pageSize) {
       params["size"] = pageSize;
+    }
+    return params;
   }
-  return params;
-}
+  // pagination method 3
+  getRequestParams3(searchZip, page, pageSize) {
+    let params = {};
+    if (searchZip) {
+      params["school_zip"] = searchZip;
+    }
+    if (page) {
+      params["page"] = page - 1;
+    }
+    if (pageSize) {
+      params["size"] = pageSize;
+    }
+    return params;
+  }
 
 
   retrieveRecords() {
@@ -109,12 +133,14 @@ getRequestParams3(searchZip, page, pageSize){
       .then(response => {
         const { records, totalPages } = response.data;
 
+        // this.setState({
+        //   records: records,
+        //   count: totalPages
+        // });
         this.setState({
-          records: records,
-          count: totalPages
+          currentRecord: records,
         });
-        console.log(response.data);
-        // console.log('state:',this.state);
+        console.log('records:', this.state.currentRecord);
       })
       .catch(e => {
         console.log(e);
@@ -168,11 +194,15 @@ getRequestParams3(searchZip, page, pageSize){
       .then(response => {
         const { records, totalPages } = response.data;
 
+        // this.setState({
+        //   records: records,
+        //   count: totalPages
+        // });
+        // console.log(response.data);
         this.setState({
-          records: records,
-          count: totalPages
+          currentRecord: records,
         });
-        console.log(response.data);
+        console.log('records:', this.state.currentRecord);
       })
       .catch(e => {
         console.log(e);
@@ -187,11 +217,15 @@ getRequestParams3(searchZip, page, pageSize){
       .then(response => {
         const { records, totalPages } = response.data;
 
-        this.setState({          
-          records: records,
-          count: totalPages
+        // this.setState({
+        //   records: records,
+        //   count: totalPages
+        // });
+        // console.log(response.data);
+        this.setState({
+          currentRecord: records,
         });
-        console.log(response.data);
+        console.log('records:', this.state.currentRecord);
       })
       .catch(e => {
         console.log(e);
@@ -225,20 +259,20 @@ getRequestParams3(searchZip, page, pageSize){
 
   render() {
     const { classes } = this.props
-    const { searchName, searchCity, searchState, searchZip, 
-            records, currentRecord, currentIndex, 
-            page, count, pageSize 
-        } = this.state;
+    const { searchName, searchCity, searchState, searchZip,
+      records, currentRecord, currentIndex,
+      page, count, pageSize
+    } = this.state;
 
     return (
-      <div className="list row">
-        <div className="col-md-8"> 
+      <div className="list row container main-section">
+        <div className="col-md-12 flex">
           <div className="input-group mb-3">
-              <input type="text" className="form-control"
-                    placeholder="Search by Name"
-                    value={searchName}
-                    onChange={this.onChangeSearchName}
-              /> 
+            <input type="text" className="form-control"
+              placeholder="Search by name"
+              value={searchName}
+              onChange={this.onChangeSearchName}
+            />
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
@@ -249,39 +283,141 @@ getRequestParams3(searchZip, page, pageSize){
               </button>
             </div>
           </div>
-        </div>
 
-      {/* Comment for FrontEnd developer:  */}
-      {/* We are using this.retrieveRecords method for search using school name */}
-      {/* For search using ZIP: use this.searchZip()   and for search using City+State: use this.searchCityState() */}
-      {/* And create this.onChangeSearchZip, this.onChangeSearchCityAndState methods to set the state */}
-
-        <div className="col-md-6">
-          <h4>Schools List</h4>
-
-          <div className="mt-3">
-            {"Items per Page: "}
-            <select onChange={this.handlePageSizeChange} value={pageSize}>
-              {this.pageSizes.map((size) => (
-                <option key={size} value={size}>
-                  {size}
-                </option>
-              ))}
-            </select>
-
-            <Pagination
-              className="my-3"
-              count={count}
-              page={page}
-              siblingCount={1}
-              boundaryCount={1}
-              variant="outlined"
-              shape="rounded"
-              onChange={this.handlePageChange}
+          <div className="input-group mb-6 margin-left-2">
+            <input type="text" className="form-control"
+              placeholder="Search by city"
+              value={searchCity}
+              onChange={this.onChangeCity}
             />
+            <input type="text" className="form-control"
+              placeholder="Search by state"
+              value={searchState}
+              onChange={this.onChangeState}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={this.searchCityState}
+              >
+                Search
+              </button>
+            </div>
           </div>
 
-          <ul className="list-group">
+          <div className="input-group mb-3 margin-left-2">
+            <input type="text" className="form-control"
+              placeholder="Search by zip"
+              value={searchZip}
+              onChange={this.onChangeZip}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={this.searchZip}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {currentRecord != '' &&
+         <div className="col-md-12">
+          <h4>Schools List</h4>
+
+          <table id="example1" className="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentRecord.map((item, i) =>
+                <tr>
+                  <td>{item.School_Name}</td>
+                  <td>{item.URL}</td>
+                  <td>{item.City}</td>
+                  <td>{item.State}</td>
+                  <td>{item.Zip}</td>
+                </tr>
+
+              )}
+            </tbody>
+          </table>
+
+           <div className="mt-3">
+              {"Items per Page: "}
+              <select onChange={this.handlePageSizeChange} value={pageSize}>
+                {this.pageSizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+
+              <Pagination
+                className="my-3"
+                count={count}
+                page={page}
+                siblingCount={1}
+                boundaryCount={1}
+                variant="outlined"
+                shape="rounded"
+                onChange={this.handlePageChange}
+              />
+          </div>
+          </div>
+        }
+      </div>
+    );
+  }
+
+
+}
+
+export default withStyles(styles)(RecordsList);
+
+
+        {/* Comment for FrontEnd developer:  */}
+        {/* We are using this.retrieveRecords method for search using school name */}
+        {/* For search using ZIP: use this.searchZip()   and for search using City+State: use this.searchCityState() */}
+        {/* And create this.onChangeSearchZip, this.onChangeSearchCityAndState methods to set the state */}
+
+        {/* <div className="col-md-6"> */}
+          {/* <h4>Schools List</h4> */}
+
+          {/* {records &&
+            <div className="mt-3">
+              {"Items per Page: "}
+              <select onChange={this.handlePageSizeChange} value={pageSize}>
+                {this.pageSizes.map((size) => (
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
+                ))}
+              </select>
+
+              <Pagination
+                className="my-3"
+                count={count}
+                page={page}
+                siblingCount={1}
+                boundaryCount={1}
+                variant="outlined"
+                shape="rounded"
+                onChange={this.handlePageChange}
+              />
+            </div>
+          } */}
+
+          {/* <ul className="list-group">
             {records &&
               records.map((record, index) => (
                 <li
@@ -294,8 +430,11 @@ getRequestParams3(searchZip, page, pageSize){
                 >
                   {record.School_Name}
                 </li>
-              ))}
-          </ul>
+              ))
+
+
+            }
+          </ul> */}
           {/* <Button
               className={`${classes.button} ${classes.removeAll}`}
               size="small"
@@ -305,168 +444,59 @@ getRequestParams3(searchZip, page, pageSize){
             >
               Remove All
           </Button> */}
-        </div>
+        {/* </div> */}
 
-        <Grid item md={8}>
-             {currentRecord ? (
-              <div className={classes.record}>
-                <h4>Record</h4>
-                <div className={classes.detail}>
-                  <label>
-                    <strong>Name:</strong>
-                  </label>{" "}
-                  {currentRecord.School_Name}
-                </div>
-                
-                <div className={classes.detail}>
-                  <label>
-                    <strong>City:</strong>
-                  </label>{" "}
-                  {currentRecord.City}
-                </div>
-
-                <div className={classes.detail}>
-                  <label>
-                    <strong>State:</strong>
-                  </label>{" "}
-                  {currentRecord.State}
-                </div>
-
-                <div className={classes.detail}>
-                  <label>
-                    <strong>Zip:</strong>
-                  </label>{" "}
-                  {currentRecord.Zip}
-                </div>
-
-                <div className={classes.detail}>
-                  <label>
-                    <strong>URL:</strong>
-                  </label>{" "}
-                  {<a href={currentRecord.URL}>Click here</a>}
-                  {/* {currentRecord.school_url} */}
-                </div>
-
-                <Link
-                  to={"/records/" + currentRecord.id}
-                  className={classes.edit}
-                >
-                  Edit
-              </Link>
+        {/* <Grid item md={8}>
+          {currentRecord ? (
+            <div className={classes.record}>
+              <p> </p>
+              <h4>Record</h4>
+              <div className={classes.detail}>
+                <label>
+                  <strong>Name:</strong>
+                </label>{" "}
+                {currentRecord.School_Name}
               </div>
-            ) : (
-                <div>
+
+              <div className={classes.detail}>
+                <label>
+                  <strong>City:</strong>
+                </label>{" "}
+                {currentRecord.City}
+              </div>
+
+              <div className={classes.detail}>
+                <label>
+                  <strong>State:</strong>
+                </label>{" "}
+                {currentRecord.State}
+              </div>
+
+              <div className={classes.detail}>
+                <label>
+                  <strong>Zip:</strong>
+                </label>{" "}
+                {currentRecord.Zip}
+              </div>
+
+              <div className={classes.detail}>
+                <label>
+                  <strong>URL:</strong>
+                </label>{" "}
+                {<a href={currentRecord.URL}>Click here</a>}
+              </div>
+
+              <Link
+                to={"/records/" + currentRecord.id}
+                className={classes.edit}
+              >
+                Edit
+              </Link>
+            </div>
+          ) : (
+              <div>
                 <br />
                 <p className={classes.record}>Please click on a Record...</p>
-                </div>
+              </div>
             )}
-          </Grid>
-
-
-
-      </div>
-    //   <div className={classes.form}>
-    //     <Grid container>
-    //       <Grid className={classes.search} item md={12}>
-    //         <TextField
-    //           label="Search by Name"
-    //           value={searchName}
-    //           onChange={this.onChangeSearchName}
-    //         />
-    //         <Button
-    //           size="small"
-    //           variant="outlined"
-    //           className={classes.textField}
-    //           onClick={this.searchName}>
-    //           Search
-    //         </Button>
-    //       </Grid>
-
-    //       <Grid item md={4}>
-    //         <h2>School List</h2>
-    //         <div className="list-group">
-    //           {records &&
-    //             records.map((record, index) => (
-    //               <ListItem
-    //                 selected={index === currentIndex}
-    //                 onClick={() => this.setActiveRecord(record, index)}
-    //                 divider
-    //                 button	
-    //                 key={index}>
-    //                 {record.school_name}
-    //               </ListItem>
-    //             ))}
-    //         </div>
-
-    //         <Button
-    //           className={`${classes.button} ${classes.removeAll}`}
-    //           size="small"
-    //           color="secondary"
-    //           variant="contained"
-    //           onClick={this.removeAllRecords}
-    //         >
-    //           Remove All
-    //       </Button>
-    //       </Grid>
-
-    //       <Grid item md={8}>
-    //         {currentRecord ? (
-    //           <div className={classes.record}>
-    //             <h4>Record</h4>
-    //             <div className={classes.detail}>
-    //               <label>
-    //                 <strong>Name:</strong>
-    //               </label>{" "}
-    //               {currentRecord.school_name}
-    //             </div>
-                
-    //             <div className={classes.detail}>
-    //               <label>
-    //                 <strong>City:</strong>
-    //               </label>{" "}
-    //               {currentRecord.school_city}
-    //             </div>
-
-    //             <div className={classes.detail}>
-    //               <label>
-    //                 <strong>State:</strong>
-    //               </label>{" "}
-    //               {currentRecord.school_state}
-    //             </div>
-
-    //             <div className={classes.detail}>
-    //               <label>
-    //                 <strong>Zip:</strong>
-    //               </label>{" "}
-    //               {currentRecord.school_zip}
-    //             </div>
-
-    //             <div className={classes.detail}>
-    //               <label>
-    //                 <strong>URL:</strong>
-    //               </label>{" "}
-    //               {<a href={currentRecord.school_url}/>}
-    //               {/* {currentRecord.school_url} */}
-    //             </div>
-
-    //             <Link
-    //               to={"/records/" + currentRecord.id}
-    //               className={classes.edit}
-    //             >
-    //               Edit
-    //           </Link>
-    //           </div>
-    //         ) : (
-    //             <div>
-    //             <br />
-    //             <p className={classes.record}>Please click on a Record...</p>
-    //             </div>
-    //         )}
-    //       </Grid>
-    //     </Grid>
-    //   </div>
-    );
-  }
-}
-
-export default withStyles(styles)(RecordsList);
+        </Grid> */}

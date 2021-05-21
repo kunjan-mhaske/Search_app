@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+.flex {
+  display: flex;
+}
+.margin-left-2 {
+  margin-left:2rem;
+}
+.margin-left-1 {
+  margin-left:1rem;
+}
+.main-section {
+  margin-top: 2% !important;
+  margin-left: 10% !important;
+}
+.input-group>.form-control, .input-group>.form-select {
+  position: relative;
+  flex: 1 1 auto;
+  width: inherit !important;
+  min-width: 0;
+  margin-bottom: 0.7rem !important;
+}
+label {
+  display: inline-block;
+  width: 5rem !important;
+}
