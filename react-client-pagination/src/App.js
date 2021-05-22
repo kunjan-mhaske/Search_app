@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+// import { Switch, Route, Link } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { styles } from "./css-common"
 
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
-import AddRecord from "./components/add-record.component";
-import Record from "./components/record.component";
+// import AddRecord from "./components/add-record.component";
+// import Record from "./components/record.component";
 import RecordsList from "./components/records-list.component";
 
 import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
@@ -21,24 +22,23 @@ class App extends Component {
             <Typography className={classes.name} variant="h6">
               School Search
             </Typography>
-            <Link to={"/records"} className={classes.link}>
+            {/* <Link to={"/records"} className={classes.link}>
               <Typography variant="body2">
                 Records
               </Typography>
-            </Link>
-            <Link to={"/add"} className={classes.link}>
+            </Link> */}
+            {/* <Link to={"/add"} className={classes.link}>
               <Typography variant="body2">
                 Add
               </Typography>
-            </Link>
+            </Link> */}
           </Toolbar>
         </AppBar>
-
-        <switch>
-          <Route exact path={["/", "/records"]} component={RecordsList} />
-          <Route exact path="/add" component={AddRecord} />
-          <Route path="/records/:id" component={Record} />
-        </switch>
+        <Route exact path={["/", "/records"]} component={RecordsList} />
+        {/* <switch> */}          
+          {/* <Route exact path="/add" component={AddRecord} />
+          <Route path="/records/:id" component={Record} /> */}
+        {/* </switch> */}
       </div>
     );
   }

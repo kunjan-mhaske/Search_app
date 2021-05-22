@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import RecordDataService from "../services/record.service";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import { styles } from "../css-common"
-import { TextField, Button, Grid, ListItem, withStyles } from "@material-ui/core";
+// import { TextField, Button, Grid, ListItem, withStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 
 // pagination
 import Pagination from "@material-ui/lab/Pagination";
@@ -16,16 +17,17 @@ class RecordsList extends Component {
     this.onChangeState = this.onChangeState.bind(this);
     this.onChangeZip = this.onChangeZip.bind(this);
     this.retrieveRecords = this.retrieveRecords.bind(this);
-    this.refreshList = this.refreshList.bind(this);
-    this.setActiveRecord = this.setActiveRecord.bind(this);
-    this.removeAllRecords = this.removeAllRecords.bind(this);
-    this.searchName = this.searchName.bind(this);
+    // this.refreshList = this.refreshList.bind(this);
+    // this.setActiveRecord = this.setActiveRecord.bind(this);
+    // this.removeAllRecords = this.removeAllRecords.bind(this);
+    // this.searchName = this.searchName.bind(this);
     this.searchCityState = this.searchCityState.bind(this);
     this.searchZip = this.searchZip.bind(this);
 
     // pagination
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePageSizeChange = this.handlePageSizeChange.bind(this);
+    
 
     this.state = {
       records: [],
@@ -38,42 +40,64 @@ class RecordsList extends Component {
 
       page: 1,
       count: 0,
-      pageSize: 3,
+      pageSize: 5,
+      current_search: '',
+      total_records: 0,
     };
     // change here for default page size
-    this.pageSizes = [3, 6, 9];
+    this.pageSizes = [5, 10, 15];
   }
 
   componentDidMount() {
-    this.retrieveRecords();
+    // this.retrieveRecords();
   }
 
   onChangeSearchName(e) {
     const searchName = e.target.value;
 
     this.setState({
-      searchName: searchName
+      searchName: searchName,
+
+      // reset other fields
+      searchCity: "",
+      searchState: "",
+      searchZip:"",
     });
   }
   onChangeCity(e) {
     const searchCity = e.target.value;
 
     this.setState({
-      searchCity: searchCity
+      searchCity: searchCity,
+
+      // reset other fields
+      searchName: "",
+      searchZip:"",
     });
   }
   onChangeState(e) {
     const searchState = e.target.value;
 
     this.setState({
-      searchState: searchState
+      searchState: searchState,
+
+      // reset other fields
+      searchName: "",
+      searchZip:"",
+      
     });
   }
   onChangeZip(e) {
     const searchZip = e.target.value;
 
     this.setState({
-      searchZip: searchZip
+      searchZip: searchZip,
+
+      // reset other fields
+      searchName: "",
+      searchCity:"",
+      searchState: "",
+
     });
   }
 
@@ -123,63 +147,72 @@ class RecordsList extends Component {
     return params;
   }
 
+  // refreshList() {
+  //   this.retrieveRecords();
+  //   this.setState({
+  //     currentRecord: null,
+  //     currentIndex: -1
+  //   });
+  // }
 
+  // setActiveRecord(record, index) {
+  //   this.setState({
+  //     currentRecord: record,
+  //     currentIndex: index
+  //   });
+  // }
+
+  // removeAllRecords() {
+  //   RecordDataService.deleteAll()
+  //     .then(response => {
+  //       console.log(response.data);
+  //       this.refreshList();
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // }
+
+  // searchName() {
+  //   const { searchName, page, pageSize } = this.state;
+  //   const params = this.getRequestParams(searchName, page, pageSize);
+
+  //   // RecordDataService.findByName(this.state.searchName)
+  //   RecordDataService.findByName(params)
+  //     .then(response => {
+  //       this.setState({
+  //         records: response.data,
+  //         count: totalPages
+  //       });
+  //       console.log(response.data);
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // }
+
+  
   retrieveRecords() {
     const { searchName, page, pageSize } = this.state;
     const params = this.getRequestParams(searchName, page, pageSize);
     // console.log('Params for retrievrecords:',params);
-
+    
     RecordDataService.findByName(params)
       .then(response => {
-        const { records, totalPages } = response.data;
+        const { totalItems, records, totalPages } = response.data;
 
         // this.setState({
         //   records: records,
         //   count: totalPages
         // });
         this.setState({
+          total_records: totalItems,
+          current_search: "ByName",
           currentRecord: records,
+          count: totalPages
         });
-        console.log('records:', this.state.currentRecord);
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
-  refreshList() {
-    this.retrieveRecords();
-    this.setState({
-      currentRecord: null,
-      currentIndex: -1
-    });
-  }
-
-  setActiveRecord(record, index) {
-    this.setState({
-      currentRecord: record,
-      currentIndex: index
-    });
-  }
-
-  removeAllRecords() {
-    RecordDataService.deleteAll()
-      .then(response => {
-        console.log(response.data);
-        this.refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
-
-  searchName() {
-    RecordDataService.findByName(this.state.searchName)
-      .then(response => {
-        this.setState({
-          records: response.data
-        });
-        console.log(response.data);
+        // console.log('records:', this.state.currentRecord);
+        // console.log("retrieveRecords", this.state.current_search);
       })
       .catch(e => {
         console.log(e);
@@ -192,7 +225,7 @@ class RecordsList extends Component {
 
     RecordDataService.findByCityState(params)
       .then(response => {
-        const { records, totalPages } = response.data;
+        const { totalItems, records, totalPages } = response.data;
 
         // this.setState({
         //   records: records,
@@ -200,9 +233,13 @@ class RecordsList extends Component {
         // });
         // console.log(response.data);
         this.setState({
+          total_records: totalItems,
+          current_search: "ByCityState",
           currentRecord: records,
+          count: totalPages
         });
-        console.log('records:', this.state.currentRecord);
+        // console.log('records:', this.state.currentRecord);
+        // console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -215,7 +252,7 @@ class RecordsList extends Component {
 
     RecordDataService.findByZip(params)
       .then(response => {
-        const { records, totalPages } = response.data;
+        const { totalItems, records, totalPages } = response.data;
 
         // this.setState({
         //   records: records,
@@ -223,9 +260,13 @@ class RecordsList extends Component {
         // });
         // console.log(response.data);
         this.setState({
+          total_records: totalItems,
+          current_search: "ByZip",
           currentRecord: records,
+          count: totalPages
         });
-        console.log('records:', this.state.currentRecord);
+        // console.log('records:', this.state.currentRecord);
+        // console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -240,8 +281,13 @@ class RecordsList extends Component {
         page: value,
       },
       () => {
-        this.retrieveRecords();
+        if(this.state.current_search === "ByName"){this.retrieveRecords();}
+        else if(this.state.current_search === "ByCityState"){this.searchCityState();}
+        else if(this.state.current_search === "ByZip"){this.searchZip();}
+        // this.retrieveRecords();
+        // console.log("pageChange", this.state.current_search);
       }
+      
     );
   }
 
@@ -252,7 +298,11 @@ class RecordsList extends Component {
         page: 1
       },
       () => {
-        this.retrieveRecords();
+        if(this.state.current_search === "ByName"){this.retrieveRecords();}
+        else if(this.state.current_search === "ByCityState"){this.searchCityState();}
+        else if(this.state.current_search === "ByZip"){this.searchZip();}
+        // this.retrieveRecords();
+        // console.log("pagesizeChange", this.state.current_search);
       }
     );
   }
@@ -265,11 +315,13 @@ class RecordsList extends Component {
     } = this.state;
 
     return (
+      
       <div className="list row container main-section">
         <div className="col-md-12 flex">
-          <div className="input-group mb-3">
+          <div className="input-group mb-4" style={{padding:20}}>
+            Search by Name
             <input type="text" className="form-control"
-              placeholder="Search by name"
+              placeholder="Enter School Name"
               value={searchName}
               onChange={this.onChangeSearchName}
             />
@@ -283,15 +335,17 @@ class RecordsList extends Component {
               </button>
             </div>
           </div>
-
-          <div className="input-group mb-6 margin-left-2">
+          <div className="input-group mb-4" style={{padding:20,borderLeft:1, borderLeftStyle:"solid",borderRight:1, borderRightStyle:"solid", borderColor: "black"}}>
+            <p style={{height: "2rem"}}>Search by City and State </p>
+            <br></br>
+              <input type="text" className="form-control"
+                placeholder="Enter City"
+                value={searchCity}
+                onChange={this.onChangeCity}
+              />
+            
             <input type="text" className="form-control"
-              placeholder="Search by city"
-              value={searchCity}
-              onChange={this.onChangeCity}
-            />
-            <input type="text" className="form-control"
-              placeholder="Search by state"
+              placeholder="Enter State (NY, NJ, etc.)"
               value={searchState}
               onChange={this.onChangeState}
             />
@@ -306,9 +360,10 @@ class RecordsList extends Component {
             </div>
           </div>
 
-          <div className="input-group mb-3 margin-left-2">
+          <div className="input-group mb-4" style={{padding:20}}>
+            Search by ZIP
             <input type="text" className="form-control"
-              placeholder="Search by zip"
+              placeholder="Enter ZIP"
               value={searchZip}
               onChange={this.onChangeZip}
             />
@@ -324,13 +379,14 @@ class RecordsList extends Component {
           </div>
         </div>
 
-        {currentRecord != '' &&
+        {currentRecord !== '' &&
          <div className="col-md-12">
           <h4>Schools List</h4>
-
+          <p>Total {this.state.total_records} records found.</p>
           <table id="example1" className="table table-bordered table-striped">
             <thead>
               <tr>
+                {/* <th>Sr. No.</th> */}
                 <th>Name</th>
                 <th>URL</th>
                 <th>City</th>
@@ -341,8 +397,9 @@ class RecordsList extends Component {
             <tbody>
               {currentRecord.map((item, i) =>
                 <tr>
+                  {/* <td>{i+1}</td> */}
                   <td>{item.School_Name}</td>
-                  <td>{item.URL}</td>
+                  <td><a href={"https://"+item.URL} target = "_blank" rel = "noopener noreferrer">{item.URL} </a></td>
                   <td>{item.City}</td>
                   <td>{item.State}</td>
                   <td>{item.Zip}</td>
@@ -375,20 +432,16 @@ class RecordsList extends Component {
           </div>
           </div>
         }
+
+
       </div>
     );
   }
-
 
 }
 
 export default withStyles(styles)(RecordsList);
 
-
-        {/* Comment for FrontEnd developer:  */}
-        {/* We are using this.retrieveRecords method for search using school name */}
-        {/* For search using ZIP: use this.searchZip()   and for search using City+State: use this.searchCityState() */}
-        {/* And create this.onChangeSearchZip, this.onChangeSearchCityAndState methods to set the state */}
 
         {/* <div className="col-md-6"> */}
           {/* <h4>Schools List</h4> */}
