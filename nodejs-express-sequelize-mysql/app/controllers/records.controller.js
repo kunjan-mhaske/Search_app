@@ -81,9 +81,16 @@ exports.findAllSchools = (req, res) => {
   const {page, size, school_city, school_state} = req.query;
   const {limit, offset} = getPagination(page, size);
 
+  var condition = school_city ? { 
+    State: school_state,
+    City: { [Op.like]: `%${school_city}%` } 
+  } : null;
+
   Records.findAndCountAll({ 
-    where: { State: school_state, 
-              City: school_city },
+    // where: { State: school_state, 
+    //           City: school_city },
+    where : condition,
+
     limit, offset
   })
   .then(data => {

@@ -17,11 +17,11 @@ class App extends Component {
     const { classes } = this.props
     return (
       <div>
-        <AppBar className={classes.appBar} position="static">
+        {/* <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Typography className={classes.name} variant="h6">
               School Search
-            </Typography>
+            </Typography> */}
             {/* <Link to={"/records"} className={classes.link}>
               <Typography variant="body2">
                 Records
@@ -32,8 +32,8 @@ class App extends Component {
                 Add
               </Typography>
             </Link> */}
-          </Toolbar>
-        </AppBar>
+          {/* </Toolbar> */}
+        {/* </AppBar> */}
         <Route exact path={["/", "/records"]} component={RecordsList} />
         {/* <switch> */}          
           {/* <Route exact path="/add" component={AddRecord} />

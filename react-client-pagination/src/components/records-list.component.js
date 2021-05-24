@@ -23,6 +23,7 @@ class RecordsList extends Component {
     // this.searchName = this.searchName.bind(this);
     this.searchCityState = this.searchCityState.bind(this);
     this.searchZip = this.searchZip.bind(this);
+    this.commonSearch = this.commonSearch.bind(this);
 
     // pagination
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -40,7 +41,7 @@ class RecordsList extends Component {
 
       page: 1,
       count: 0,
-      pageSize: 5,
+      pageSize: 100,
       current_search: '',
       total_records: 0,
     };
@@ -57,7 +58,7 @@ class RecordsList extends Component {
 
     this.setState({
       searchName: searchName,
-
+      current_search: "ByName",
       // reset other fields
       searchCity: "",
       searchState: "",
@@ -69,6 +70,7 @@ class RecordsList extends Component {
 
     this.setState({
       searchCity: searchCity,
+      current_search:"ByCityState",
 
       // reset other fields
       searchName: "",
@@ -80,6 +82,7 @@ class RecordsList extends Component {
 
     this.setState({
       searchState: searchState,
+      current_search: "ByCityState",
 
       // reset other fields
       searchName: "",
@@ -92,6 +95,7 @@ class RecordsList extends Component {
 
     this.setState({
       searchZip: searchZip,
+      current_search: "ByZip",
 
       // reset other fields
       searchName: "",
@@ -174,21 +178,30 @@ class RecordsList extends Component {
   // }
 
   // searchName() {
-  //   const { searchName, page, pageSize } = this.state;
-  //   const params = this.getRequestParams(searchName, page, pageSize);
+    // const { searchName, page, pageSize } = this.state;
+    // const params = this.getRequestParams(searchName, page, pageSize);
+    // // console.log('Params for retrievrecords:',params);
+    
+    // RecordDataService.findByName(params)
+    //   .then(response => {
+    //     const { totalItems, records, totalPages } = response.data;
 
-  //   // RecordDataService.findByName(this.state.searchName)
-  //   RecordDataService.findByName(params)
-  //     .then(response => {
-  //       this.setState({
-  //         records: response.data,
-  //         count: totalPages
-  //       });
-  //       console.log(response.data);
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
+    //     // this.setState({
+    //     //   records: records,
+    //     //   count: totalPages
+    //     // });
+    //     this.setState({
+    //       total_records: totalItems,
+    //       current_search: "ByName",
+    //       currentRecord: records,
+    //       count: totalPages
+    //     });
+    //     // console.log('records:', this.state.currentRecord);
+    //     // console.log("retrieveRecords", this.state.current_search);
+    //   })
+    //   .catch(e => {
+    //     console.log(e);
+    //   });
   // }
 
   
@@ -218,6 +231,18 @@ class RecordsList extends Component {
         console.log(e);
       });
   }
+
+
+  commonSearch(){
+    const {current_search} = this.state;
+    if (current_search == "ByCityState"){
+      this.searchCityState();
+    }
+    else if (current_search == "ByZip"){
+      this.searchZip();
+    }
+  }
+
 
   searchCityState() {
     const { searchCity, searchState, page, pageSize } = this.state;
@@ -318,7 +343,7 @@ class RecordsList extends Component {
       
       <div className="list row container main-section">
         <div className="col-md-12 flex">
-          <div className="input-group mb-4" style={{padding:20}}>
+          {/* <div className="input-group mb-4" style={{padding:20}}>
             Search by Name
             <input type="text" className="form-control"
               placeholder="Enter School Name"
@@ -334,10 +359,11 @@ class RecordsList extends Component {
                 Search
               </button>
             </div>
-          </div>
-          <div className="input-group mb-4" style={{padding:20,borderLeft:1, borderLeftStyle:"solid",borderRight:1, borderRightStyle:"solid", borderColor: "black"}}>
-            <p style={{height: "2rem"}}>Search by City and State </p>
-            <br></br>
+          </div> */}
+          {/* <div className="input-group mb-6" style={{padding:20,borderRight:1, borderRightStyle:"solid", borderColor: "black"}}></div> */}
+          <div className="input-group mb-6">
+            {/* <p style={{height: "2rem"}}>Search by City and State </p>
+            <br></br> */}
               <input type="text" className="form-control"
                 placeholder="Enter City"
                 value={searchCity}
@@ -345,29 +371,34 @@ class RecordsList extends Component {
               />
             
             <input type="text" className="form-control"
-              placeholder="Enter State (NY, NJ, etc.)"
+              placeholder="Select State"
               value={searchState}
               onChange={this.onChangeState}
             />
-            <div className="input-group-append">
+            {/* <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
                 onClick={this.searchCityState}
-              >
+              >              
                 Search
               </button>
-            </div>
+            </div> */}
           </div>
 
-          <div className="input-group mb-4" style={{padding:20}}>
-            Search by ZIP
+          
+          <div className="col-sm-2 sep">
+             <span className="sepText">OR</span>
+          </div>
+
+          <div className="input-group mb-6 margin-left-2">
+            {/* Search by ZIP */}
             <input type="text" className="form-control"
               placeholder="Enter ZIP"
               value={searchZip}
               onChange={this.onChangeZip}
             />
-            <div className="input-group-append">
+            {/* <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
@@ -375,31 +406,47 @@ class RecordsList extends Component {
               >
                 Search
               </button>
-            </div>
+            </div> */}
+          </div>
+        </div>
+
+        <div className="text-center">
+          <div className="input-group-append">
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={this.commonSearch}
+                >
+                  Search
+                </button>
           </div>
         </div>
 
         {currentRecord !== '' &&
          <div className="col-md-12">
           <h4>Schools List</h4>
-          <p>Total {this.state.total_records} records found.</p>
-          <table id="example1" className="table table-bordered table-striped">
+          {this.state.total_records !== 1 && <p>Total {this.state.total_records} records found.</p>}
+          {this.state.total_records === 1 && <p>Only {this.state.total_records} record found.</p>}
+          {/* <p>Total {this.state.total_records} records found.</p> */}
+          <table id="example1" className="table table-responsive">
             <thead>
               <tr>
                 {/* <th>Sr. No.</th> */}
-                <th>Name</th>
-                <th>URL</th>
+                <th>School Name</th>
+                {/* <th>URL</th> */}
                 <th>City</th>
                 <th>State</th>
                 <th>Zip</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody >
               {currentRecord.map((item, i) =>
                 <tr>
                   {/* <td>{i+1}</td> */}
-                  <td>{item.School_Name}</td>
-                  <td><a href={"https://"+item.URL} target = "_blank" rel = "noopener noreferrer">{item.URL} </a></td>
+                  <td><a href={"https://"+item.URL} target = "_blank" rel = "noopener noreferrer" style={{textDecoration:"none"}}>
+                        {item.School_Name}
+                      </a></td>
+                  {/* <td><a href={"https://"+item.URL} target = "_blank" rel = "noopener noreferrer">{item.URL} </a></td> */}
                   <td>{item.City}</td>
                   <td>{item.State}</td>
                   <td>{item.Zip}</td>
@@ -410,14 +457,14 @@ class RecordsList extends Component {
           </table>
 
            <div className="mt-3">
-              {"Items per Page: "}
+              {/* {"Items per Page: "}
               <select onChange={this.handlePageSizeChange} value={pageSize}>
                 {this.pageSizes.map((size) => (
                   <option key={size} value={size}>
                     {size}
                   </option>
                 ))}
-              </select>
+              </select> */}
 
               <Pagination
                 className="my-3"
