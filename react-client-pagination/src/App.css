@@ -47,8 +47,36 @@
 }
 .main-section {
   margin-top: 2% !important;
-  margin-left: 10% !important;
+  width: 50%;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
+@media (max-width: 575.98px) {
+  .main-section {
+    margin-top: 2% !important;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+ }
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .main-section {
+    margin-top: 2% !important;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+ }
+ @media (min-width: 768px) and (max-width: 991.98px) { 
+  .main-section {
+    margin-top: 2% !important;
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  }
+
 .input-group>.form-control, .input-group>.form-select {
   position: relative;
   flex: 1 1 auto;
@@ -94,6 +122,7 @@
   border-color: #296D80 !important;
 }
 
-.table td{
-border: none;
+.table td {
+  border: none;
+  padding: .2rem .5rem !important;
 }
