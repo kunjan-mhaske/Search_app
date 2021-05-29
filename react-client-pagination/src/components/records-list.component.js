@@ -9,6 +9,10 @@ import { withStyles } from "@material-ui/core";
 // pagination
 import Pagination from "@material-ui/lab/Pagination";
 
+// States select dropdown
+// import SelectUSState from 'react-select-us-states';
+import states from "../states.json";
+
 class RecordsList extends Component {
   constructor(props) {
     super(props);
@@ -79,6 +83,8 @@ class RecordsList extends Component {
   }
   onChangeState(e) {
     const searchState = e.target.value;
+    // const searchState = e;
+    // console.log(searchState);
 
     this.setState({
       searchState: searchState,
@@ -235,10 +241,10 @@ class RecordsList extends Component {
 
   commonSearch() {
     const { current_search } = this.state;
-    if (current_search == "ByCityState") {
+    if (current_search === "ByCityState") {
       this.searchCityState();
     }
-    else if (current_search == "ByZip") {
+    else if (current_search === "ByZip") {
       this.searchZip();
     }
   }
@@ -333,21 +339,21 @@ class RecordsList extends Component {
   }
 
   render() {
-    const { classes } = this.props
-    const { searchName, searchCity, searchState, searchZip,
-      records, currentRecord, currentIndex,
-      page, count, pageSize
+    // const { classes } = this.props
+    const { searchCity, searchState, searchZip,
+      currentRecord,
+      page, count
     } = this.state;
 
     return (
 
       <div className="list row  main-section">
 
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
+        <div className="container">
+          <div className="row">
+            <div className="col-sm">
               <div className="form-group">
-                <label for="city">City*</label>
+                <label>City</label>
                 <input type="text"
                   name="city"
                   id="city"
@@ -359,25 +365,42 @@ class RecordsList extends Component {
               </div>
               <p> </p>
               <div className="form-group">
-                <label for="State">State*</label>
-                <input type="text"
+                <label>State</label>
+
+                {/* Works on only abbreviation - Keep it for future */}
+                {/* <div id="custom-select">
+                  <SelectUSState id="State"  className="form-control" onChange={this.onChangeState} />
+                </div> */}
+
+                {/* Works on both abbreviation and full name of state - keeping it for now */}
+                <div id="custom-select">
+                  <select id="State" className="form-control" onChange={this.onChangeState}
+                  value = {searchState}
+                  >
+                      {states.map(item => (
+                        <option key={item.abbreviation} value={item.name}>
+                          {item.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+
+                {/* <input type="text"
                   name="State"
                   id="State"
                   className="form-control"
                   placeholder="Select State"
                   value={searchState}
                   onChange={this.onChangeState}
-                />
+                /> */}
               </div>
             </div>
             <div className="col-sm-2 sep">
-              {/* <div className="col-sm-2 sep"> */}
               <span className="sepText">OR</span>
-              {/* </div> */}
             </div>
-            <div class="col-sm">
+            <div className="col-sm">
               <div className="form-group">
-                <label for="zip">ZIP*</label>
+                <label>ZIP</label>
                 <input type="text"
                   name="zip"
                   id="zip"
@@ -395,7 +418,7 @@ class RecordsList extends Component {
           <div className="input-group-append">
             <button
               className="btn btn-outline-secondary"
-              type="button"
+              type="submit"
               onClick={this.commonSearch}
             >
               Search
@@ -460,36 +483,3 @@ class RecordsList extends Component {
 }
 
 export default withStyles(styles)(RecordsList);
-
-{/* <div className="col-md-12 flex">
-
-          <div className="column mb-4">
-            <div className="input-group mb-4">
-              <input type="text" className="form-control"
-                placeholder="Enter City"
-                value={searchCity}
-                onChange={this.onChangeCity}
-              />
-            </div>
-            <div className="input-group mb-4">
-
-              <input type="text" className="form-control"
-                placeholder="Select State"
-                value={searchState}
-                onChange={this.onChangeState}
-              />
-            </div>
-
-          </div>
-          <div className="col-sm-2 sep">
-            <span className="sepText">OR</span>
-          </div>
-
-          <div className="input-group mb-4 margin-left-2">
-            <input type="text" className="form-control"
-              placeholder="Enter ZIP"
-              value={searchZip}
-              onChange={this.onChangeZip}
-            />
-          </div>
-</div> */}

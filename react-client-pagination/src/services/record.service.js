@@ -1,18 +1,18 @@
 import http from "../http-common";
 
 class RecordDataService {
-    getAll(params){
-        return http.get("/records", {params});
-    }
-    get(id){
-        return http.get(`/records/${id}`);
-    }
+    // getAll(params){
+    //     return http.get("/records", {params});
+    // }
+    // get(id){
+    //     return http.get(`/records/${id}`);
+    // }
     // create(data){
     //     return http.post("/records", data);
     // }
-    update(id, data){
-        return http.put(`/records/${id}`, data);
-    }
+    // update(id, data){
+    //     return http.put(`/records/${id}`, data);
+    // }
     // delete(id){
     //     return http.delete(`/records/${id}`);
     // }

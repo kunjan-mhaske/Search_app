@@ -10,11 +10,12 @@ import './App.css';
 // import Record from "./components/record.component";
 import RecordsList from "./components/records-list.component";
 
-import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
+// import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 class App extends Component {
   render() {
-    const { classes } = this.props
+    // const { classes } = this.props
     return (
       <div>
         {/* <AppBar className={classes.appBar} position="static">

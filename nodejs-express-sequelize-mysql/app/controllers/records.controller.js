@@ -62,8 +62,11 @@ exports.findAll = (req, res) => {
                     } : null;
     
     const {limit, offset } = getPagination(page, size);
+
+    // Get results in ascending order of school name
+    const ordering = [['School_Name', 'ASC']];
   
-    Records.findAndCountAll({ where: condition, limit, offset })
+    Records.findAndCountAll({ where: condition, order: ordering, limit, offset })
       .then(data => {
         const response = getPagingData(data, page, limit);
         res.send(response);
@@ -86,11 +89,14 @@ exports.findAllSchools = (req, res) => {
     City: { [Op.like]: `%${school_city}%` } 
   } : null;
 
+  // Get results in ascending order of school name
+  const ordering = [['School_Name', 'ASC']];
+
   Records.findAndCountAll({ 
     // where: { State: school_state, 
     //           City: school_city },
     where : condition,
-
+    order: ordering,
     limit, offset
   })
   .then(data => {
@@ -110,8 +116,11 @@ exports.findAllSchoolsZip = (req, res) => {
   const {page, size, school_zip} = req.query;
   const {limit, offset} = getPagination(page, size);
 
+  // Get results in ascending order of school name
+  const ordering = [['School_Name', 'ASC']];
+
   Records.findAndCountAll({ 
-    where: { Zip: school_zip }, limit, offset })
+    where: { Zip: school_zip }, order: ordering, limit, offset })
   .then(data => {
     const response = getPagingData(data, page, limit);
     res.send(response);

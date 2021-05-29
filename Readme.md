@@ -84,6 +84,16 @@ https://bezkoder.com/react-pagination-material-ui/
     - create record.component.js
     - 
 
+- Last Minute New Updates
+
+- Add US state dropdown select bar:
+    Follow src code from github directory: (No need to install this package)
+    Get states.json file from repository and add it to src folder.
+    https://www.npmjs.com/package/react-select-us-states
+
+- Get results in ascending order of school names
+  Modify order:ordering in backend record.controllers
+
 
 Run server in backend folder: node server.js
 Run client in frontend folder: npm start
@@ -92,8 +102,6 @@ Run client in frontend folder: npm start
 
 
 button color: #296D80
-
-
 
 Project 2: http://changingthepresent.pythonanywhere.com/  COLLEGE SEARCH exactly like this
 

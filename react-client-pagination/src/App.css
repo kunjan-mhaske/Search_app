@@ -126,3 +126,18 @@
   border: none;
   padding: .2rem .5rem !important;
 }
+
+#custom-select {
+  position: relative;
+  /* max-width: 400px; optional */
+}
+ 
+#custom-select::after {
+  content: "\25bc"; /* HTML symbol */
+  /* Reposition */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 10px;
+  line-height: 40px; /*Vertical center text*/
+}
