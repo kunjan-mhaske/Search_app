@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to pagination api." });
+    res.json({ message: "Welcome to the School Search API landing page. Use API inspection tools such as Postman to test API calls." });
 });
 
 require("./app/routes/records.routes")(app);

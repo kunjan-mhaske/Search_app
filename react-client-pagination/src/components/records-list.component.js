@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import RecordDataService from "../services/record.service";
-// import { Link } from "react-router-dom";
 
 import { styles } from "../css-common"
-// import { TextField, Button, Grid, ListItem, withStyles } from "@material-ui/core";
 import { withStyles } from "@material-ui/core";
 
 // pagination
@@ -21,10 +19,6 @@ class RecordsList extends Component {
     this.onChangeState = this.onChangeState.bind(this);
     this.onChangeZip = this.onChangeZip.bind(this);
     this.retrieveRecords = this.retrieveRecords.bind(this);
-    // this.refreshList = this.refreshList.bind(this);
-    // this.setActiveRecord = this.setActiveRecord.bind(this);
-    // this.removeAllRecords = this.removeAllRecords.bind(this);
-    // this.searchName = this.searchName.bind(this);
     this.searchCityState = this.searchCityState.bind(this);
     this.searchZip = this.searchZip.bind(this);
     this.commonSearch = this.commonSearch.bind(this);
@@ -157,81 +151,21 @@ class RecordsList extends Component {
     return params;
   }
 
-  // refreshList() {
-  //   this.retrieveRecords();
-  //   this.setState({
-  //     currentRecord: null,
-  //     currentIndex: -1
-  //   });
-  // }
-
-  // setActiveRecord(record, index) {
-  //   this.setState({
-  //     currentRecord: record,
-  //     currentIndex: index
-  //   });
-  // }
-
-  // removeAllRecords() {
-  //   RecordDataService.deleteAll()
-  //     .then(response => {
-  //       console.log(response.data);
-  //       this.refreshList();
-  //     })
-  //     .catch(e => {
-  //       console.log(e);
-  //     });
-  // }
-
-  // searchName() {
-  // const { searchName, page, pageSize } = this.state;
-  // const params = this.getRequestParams(searchName, page, pageSize);
-  // // console.log('Params for retrievrecords:',params);
-
-  // RecordDataService.findByName(params)
-  //   .then(response => {
-  //     const { totalItems, records, totalPages } = response.data;
-
-  //     // this.setState({
-  //     //   records: records,
-  //     //   count: totalPages
-  //     // });
-  //     this.setState({
-  //       total_records: totalItems,
-  //       current_search: "ByName",
-  //       currentRecord: records,
-  //       count: totalPages
-  //     });
-  //     // console.log('records:', this.state.currentRecord);
-  //     // console.log("retrieveRecords", this.state.current_search);
-  //   })
-  //   .catch(e => {
-  //     console.log(e);
-  //   });
-  // }
-
-
+  // Search using School Name
   retrieveRecords() {
     const { searchName, page, pageSize } = this.state;
     const params = this.getRequestParams(searchName, page, pageSize);
-    // console.log('Params for retrievrecords:',params);
 
     RecordDataService.findByName(params)
       .then(response => {
         const { totalItems, records, totalPages } = response.data;
 
-        // this.setState({
-        //   records: records,
-        //   count: totalPages
-        // });
         this.setState({
           total_records: totalItems,
           current_search: "ByName",
           currentRecord: records,
           count: totalPages
         });
-        // console.log('records:', this.state.currentRecord);
-        // console.log("retrieveRecords", this.state.current_search);
       })
       .catch(e => {
         console.log(e);
@@ -249,7 +183,7 @@ class RecordsList extends Component {
     }
   }
 
-
+  // Search usign City and State
   searchCityState() {
     const { searchCity, searchState, page, pageSize } = this.state;
     const params = this.getRequestParams2(searchCity, searchState, page, pageSize);
@@ -258,25 +192,19 @@ class RecordsList extends Component {
       .then(response => {
         const { totalItems, records, totalPages } = response.data;
 
-        // this.setState({
-        //   records: records,
-        //   count: totalPages
-        // });
-        // console.log(response.data);
         this.setState({
           total_records: totalItems,
           current_search: "ByCityState",
           currentRecord: records,
           count: totalPages
         });
-        // console.log('records:', this.state.currentRecord);
-        // console.log(response.data);
       })
       .catch(e => {
         console.log(e);
       });
   }
 
+  // Search using ZIP
   searchZip() {
     const { searchZip, page, pageSize } = this.state;
     const params = this.getRequestParams3(searchZip, page, pageSize);
@@ -285,19 +213,12 @@ class RecordsList extends Component {
       .then(response => {
         const { totalItems, records, totalPages } = response.data;
 
-        // this.setState({
-        //   records: records,
-        //   count: totalPages
-        // });
-        // console.log(response.data);
         this.setState({
           total_records: totalItems,
           current_search: "ByZip",
           currentRecord: records,
           count: totalPages
         });
-        // console.log('records:', this.state.currentRecord);
-        // console.log(response.data);
       })
       .catch(e => {
         console.log(e);
@@ -316,7 +237,6 @@ class RecordsList extends Component {
         else if (this.state.current_search === "ByCityState") { this.searchCityState(); }
         else if (this.state.current_search === "ByZip") { this.searchZip(); }
         // this.retrieveRecords();
-        // console.log("pageChange", this.state.current_search);
       }
 
     );
@@ -333,13 +253,11 @@ class RecordsList extends Component {
         else if (this.state.current_search === "ByCityState") { this.searchCityState(); }
         else if (this.state.current_search === "ByZip") { this.searchZip(); }
         // this.retrieveRecords();
-        // console.log("pagesizeChange", this.state.current_search);
       }
     );
   }
 
   render() {
-    // const { classes } = this.props
     const { searchCity, searchState, searchZip,
       currentRecord,
       page, count
@@ -384,7 +302,7 @@ class RecordsList extends Component {
                       ))}
                   </select>
                 </div>
-
+                {/* Can use this instead of DropDown */}
                 {/* <input type="text"
                   name="State"
                   id="State"

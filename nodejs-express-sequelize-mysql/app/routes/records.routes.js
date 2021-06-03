@@ -15,10 +15,10 @@ module.exports = app => {
     router.get("/Schools", records.findAllSchools);
 
     // retrive a school with id
-    router.get("/:school_id", records.findOne);
+    // router.get("/:school_id", records.findOne);
 
     // update the record
-    router.put("/:school_id", records.update);
+    // router.put("/:school_id", records.update);
 
     // delete a record with id
     // router.delete("/:school_id", records.delete);
