@@ -6,7 +6,10 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD,
     {
         host: dbConfig.HOST,
         dialect: dbConfig.dialect,
-        operatorsAliases: false,
+        // deprecated:
+        // operatorsAliases: false,
+        // To stop giving SQL logs on console
+        // logging: false,
         define: {
             timestamps: false,
             createdAt: false,

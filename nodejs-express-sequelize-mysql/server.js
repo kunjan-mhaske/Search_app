@@ -30,7 +30,8 @@ app.listen(PORT, () => {
 });
 
 const db = require("./app/models");
-db.sequelize.sync();
+// uncomment to create the table if not exists
+// db.sequelize.sync();
 
 
 // Use In development-testing only. It deletes the db records

@@ -12,4 +12,5 @@ module.exports = (sequelize, Sequelize) => {
         updatedAt: false,
     } );
     return Records;
+    
 };
