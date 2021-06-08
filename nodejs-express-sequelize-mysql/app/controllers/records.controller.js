@@ -50,6 +50,35 @@ const getPagingData = (data, page, limit) => {
 //     });
 // };
 
+// retrieve all records based on the school name for Dynamic search
+exports.findAllDynamic = (req, res) => {
+  // const page = req.query.page;
+  // const size = req.query.size;
+  const school_name = req.query.school_name;
+  // const { page, size, school_name } = req.query;
+  var condition = school_name ? { 
+                    School_name: { [Op.like]: `%${school_name}%` } 
+                  } : null;
+  
+  // const {limit, offset } = getPagination(page, size);
+
+  // Get results in ascending order of school name
+  const ordering = [['School_Name', 'ASC']];
+
+  // Records.findAndCountAll({ where: condition, order: ordering, limit, offset })
+  Records.findAll({ where: condition, order: ordering })
+    .then(data => {
+      const response = data;
+      res.send(response);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving records."
+      });
+    });
+};
+
 // retrieve all records based on the school name
 exports.findAll = (req, res) => {
     const page = req.query.page;

@@ -5,6 +5,9 @@ module.exports = app => {
     // create a new record
     // router.post("/", records.create);
 
+    //retrive all records dynamically
+    router.get("/dynamic", records.findAllDynamic);
+
     // retrieve all records
     router.get("/", records.findAll);
 
