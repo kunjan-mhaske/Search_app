@@ -1,16 +1,18 @@
 const express = require("express")
 const bodyParser = require("body-parser")
-const cors = require("cors");
-
 const app = express();
 
+
+// For single domain to connect
+const cors = require("cors");
 var corsOptions = {
     origin: "http://localhost:8081"
 };
+// app.use(cors(corsOptions))
 
-// app.use(cors(corsOptions));
-
-// allow multiple domains to connect
+// Uncomment above function call and comment following function call 
+// to use only single domain to connect.
+// To allow multiple domains to connect
 app.use((req, res, next) => {
     const allowedOrigins = ['http://localhost:8081', 'http://localhost:8082'];
     const origin = req.headers.origin;
@@ -33,7 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-    res.json({ message: "Welcome to the School Search API landing page. Use API inspection tools such as Postman to test API calls." });
+    res.json({ message: "Welcome to the Search API landing page. Use API inspection tools such as Postman to test API calls." });
 });
 
 require("./app/routes/records.routes")(app);

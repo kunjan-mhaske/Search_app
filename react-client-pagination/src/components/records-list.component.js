@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+
+// API service to retrieve records
 import RecordDataService from "../services/record.service";
 
+// CSS styles for form UI
 import { styles } from "../css-common"
 import { withStyles } from "@material-ui/core";
 
@@ -11,6 +14,7 @@ import Pagination from "@material-ui/lab/Pagination";
 // import SelectUSState from 'react-select-us-states';
 import states from "../states.json";
 
+// Utilize Component class to update properties and state
 class RecordsList extends Component {
   constructor(props) {
     super(props);
@@ -27,7 +31,7 @@ class RecordsList extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePageSizeChange = this.handlePageSizeChange.bind(this);
 
-
+    // State to save and retrieve properties
     this.state = {
       records: [],
       currentRecord: '',
@@ -46,11 +50,12 @@ class RecordsList extends Component {
     // change here for default page size
     this.pageSizes = [5, 10, 15];
   }
-
+  // Call methods while loading the application
   componentDidMount() {
     // this.retrieveRecords();
   }
 
+  // change properties when user gives input in Name field
   onChangeSearchName(e) {
     const searchName = e.target.value;
 
@@ -63,6 +68,8 @@ class RecordsList extends Component {
       searchZip: "",
     });
   }
+
+  // change properties when user gives input in City field
   onChangeCity(e) {
     const searchCity = e.target.value;
 
@@ -75,6 +82,8 @@ class RecordsList extends Component {
       searchZip: "",
     });
   }
+
+  // change properties when user gives input in State field
   onChangeState(e) {
     const searchState = e.target.value;
     // const searchState = e;
@@ -90,6 +99,8 @@ class RecordsList extends Component {
 
     });
   }
+
+  // change properties when user gives input in ZIP field
   onChangeZip(e) {
     const searchZip = e.target.value;
 
@@ -105,7 +116,7 @@ class RecordsList extends Component {
     });
   }
 
-  // pagination method 1
+  // generate parameters mapping to forward request
   getRequestParams(searchName, page, pageSize) {
     let params = {};
     if (searchName) {
@@ -119,7 +130,8 @@ class RecordsList extends Component {
     }
     return params;
   }
-  // pagination method 2
+
+  // generate parameters mapping to forward request
   getRequestParams2(searchCity, searchState, page, pageSize) {
     let params = {};
     if (searchCity) {
@@ -136,7 +148,8 @@ class RecordsList extends Component {
     }
     return params;
   }
-  // pagination method 3
+
+  // generate parameters mapping to forward request
   getRequestParams3(searchZip, page, pageSize) {
     let params = {};
     if (searchZip) {
@@ -172,7 +185,7 @@ class RecordsList extends Component {
       });
   }
 
-
+  // Search using either By City and State or By ZIP as selected by user
   commonSearch() {
     const { current_search } = this.state;
     if (current_search === "ByCityState") {
@@ -225,8 +238,7 @@ class RecordsList extends Component {
       });
   }
 
-
-  // pagination methods 2 and 3
+  // pagination method to handle page changes
   handlePageChange(event, value) {
     this.setState(
       {
@@ -242,6 +254,7 @@ class RecordsList extends Component {
     );
   }
 
+  // pagination method to handle size of retrieved records per page
   handlePageSizeChange(event) {
     this.setState(
       {
@@ -257,6 +270,7 @@ class RecordsList extends Component {
     );
   }
 
+  // Render the HTML block
   render() {
     const { searchCity, searchState, searchZip,
       currentRecord,
@@ -264,9 +278,7 @@ class RecordsList extends Component {
     } = this.state;
 
     return (
-
       <div className="list row  main-section">
-
         <div className="container">
           <div className="row">
             <div className="col-sm">
@@ -392,12 +404,8 @@ class RecordsList extends Component {
             </div>
           </div>
         }
-
-
       </div>
     );
   }
-
 }
-
 export default withStyles(styles)(RecordsList);

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import { styles } from "./css-common"
 
-import './App.css';
-
+// Import the component
 import RecordsList from "./components/records-list.component";
 
+// CSS style for UI
+import './App.css';
+import { styles } from "./css-common"
 import { withStyles } from '@material-ui/core';
 
 class App extends Component {
@@ -17,5 +18,4 @@ class App extends Component {
     );
   }
 }
-
 export default withStyles(styles)(App);

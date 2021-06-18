@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import RecordDataService from "../services/record.service.js";
 
+// UI
 import { Autocomplete } from '@material-ui/lab';
 import { TextField } from '@material-ui/core';
 
+// Component for dynamic search bar
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -17,35 +19,31 @@ class SearchBar extends Component {
       searchName: "",
     };
   }
-
+  // Automatically Call this when this application loads.
   componentDidMount() {
     this.retrieveRecords();
   }
-
+  // Open the link in new tab when click on dropdown option
   onSearchQuery1(event, values) {
     if (values){
       window.open("https://"+values.URL, '_blank', 'noopener,noreferrer');
-      // this.setState({
-      //   searchName: event.target.innerText,
-      // });  
     }
-    // console.log(this.state);
   }  
-
+  // Not used for now
   onSearchQuery(e) {
     const searchQuery = e.target.value;
     this.setState({
       searchName: searchQuery,
     });
-    // console.log(this.state)
   }  
-
+  // Prepare params to forward in request
   getRequestParam(searchName){
     let params = {};
     params["school_name"] = searchName;
     return params;
   }
 
+  // To get all records based on the name
   retrieveRecords() {
     const { searchName } = this.state;
     const param = this.getRequestParam(searchName);
@@ -57,14 +55,12 @@ class SearchBar extends Component {
       this.setState({
         currentRecord: records,
       });
-
       // print on console
       // console.log(this.state);
-
     })
     .catch(e => { console.log(e); });
   }
-  
+
   render(){
     const { currentRecord } = this.state;
     return (
@@ -86,7 +82,7 @@ class SearchBar extends Component {
                     renderInput={(params) => 
                         <TextField {...params} 
                           label="University Search" 
-                          variant="outlined" 
+                          variant="standard" 
                         />
                       }
                     // To give links for labels
@@ -112,6 +108,5 @@ class SearchBar extends Component {
     </div>
     );
   }
-
 }
 export default SearchBar;

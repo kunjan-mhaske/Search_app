@@ -50,22 +50,15 @@ const getPagingData = (data, page, limit) => {
 //     });
 // };
 
-// retrieve all records based on the school name for Dynamic search
+// retrieve all records based on the school name for Dynamic search bar
 exports.findAllDynamic = (req, res) => {
-  // const page = req.query.page;
-  // const size = req.query.size;
   const school_name = req.query.school_name;
-  // const { page, size, school_name } = req.query;
   var condition = school_name ? { 
                     School_name: { [Op.like]: `%${school_name}%` } 
                   } : null;
-  
-  // const {limit, offset } = getPagination(page, size);
-
   // Get results in ascending order of school name
   const ordering = [['School_Name', 'ASC']];
 
-  // Records.findAndCountAll({ where: condition, order: ordering, limit, offset })
   Records.findAll({ where: condition, order: ordering })
     .then(data => {
       const response = data;
@@ -121,8 +114,6 @@ exports.findAllSchools = (req, res) => {
   const ordering = [['School_Name', 'ASC']];
 
   Records.findAndCountAll({ 
-    // where: { State: school_state, 
-    //           City: school_city },
     where : condition,
     order: ordering,
     limit, offset
@@ -179,7 +170,6 @@ exports.findOne = (req, res) => {
 // Update a record by the id in the request
 // exports.update = (req, res) => {
 //     const school_id = req.params.school_id;
-
 //     Records.update(req.body, {
 //       where: { School_id: school_id }
 //     })
@@ -242,4 +232,3 @@ exports.findOne = (req, res) => {
 //           });
 //         });
 // };
-
