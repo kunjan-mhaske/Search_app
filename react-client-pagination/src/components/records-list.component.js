@@ -194,6 +194,7 @@ class RecordsList extends Component {
     else if (current_search === "ByZip") {
       this.searchZip();
     }
+    // else{this.searchCityState();}
   }
 
   // Search usign City and State
@@ -307,11 +308,13 @@ class RecordsList extends Component {
                   <select id="State" className="form-control" onChange={this.onChangeState}
                   value = {searchState}
                   >
-                      {states.map(item => (
+                      {<option hidden value="" style={{color:'#ced4da !important'}}>Select State</option>}
+                        {states.map(item => (
                         <option key={item.abbreviation} value={item.name}>
                           {item.name}
                         </option>
                       ))}
+
                   </select>
                 </div>
                 {/* Can use this instead of DropDown */}
@@ -376,10 +379,10 @@ class RecordsList extends Component {
                 {currentRecord.map((item, i) =>
                   <tr>
                     {/* <td>{i+1}</td> */}
-                    <td><a href={"https://" + item.URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <td><a href={item.URL_CtP} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                       {item.School_Name}
                     </a></td>
-                    {/* <td><a href={"https://"+item.URL} target = "_blank" rel = "noopener noreferrer">{item.URL} </a></td> */}
+                    {/* <td><a href={item.URL_CtP} target = "_blank" rel = "noopener noreferrer">{item.URL_CtP} </a></td> */}
                     <td>{item.City}</td>
                     <td>{item.State}</td>
                     <td>{item.Zip}</td>

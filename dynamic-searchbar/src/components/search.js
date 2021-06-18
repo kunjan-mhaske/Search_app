@@ -26,7 +26,7 @@ class SearchBar extends Component {
   // Open the link in new tab when click on dropdown option
   onSearchQuery1(event, values) {
     if (values){
-      window.open("https://"+values.URL, '_blank', 'noopener,noreferrer');
+      window.open(values.URL_CtP, '_blank', 'noopener,noreferrer');
     }
   }  
   // Not used for now
@@ -87,7 +87,7 @@ class SearchBar extends Component {
                       }
                     // To give links for labels
                     renderOption={(option) =>(
-                        <a href={"https://"+option.URL} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                        <a href={option.URL_CtP} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                           {option.School_Name}
                         </a>
                       )}

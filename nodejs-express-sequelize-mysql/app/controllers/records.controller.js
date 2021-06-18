@@ -106,7 +106,7 @@ exports.findAllSchools = (req, res) => {
   const {limit, offset} = getPagination(page, size);
 
   var condition = school_city ? { 
-    State: school_state,
+    State: { [Op.like]: `%${school_state}%` },
     City: { [Op.like]: `%${school_city}%` } 
   } : null;
 
