@@ -1,4 +1,4 @@
-# K-12 School Seach App (react-client-pagination folder)
+# K-12 School Seach App (react-client-pagination)
 This web-application utilizes Node JS backend, Sequelize ORM and MySQL database to provide APIs for search queries.
 The frontend is developed using React JS and Bootstrap, with query input for following:
     - Search using City and State 
