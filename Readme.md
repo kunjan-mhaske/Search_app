@@ -23,7 +23,7 @@ Type "npm start" and hit enter.
 * Use console and inspect elements in browser while modifying the code.
 
 
-# University Search App
+# University Search App (dynamic-searchbar)
 This web-application also utlizes previous backend server.
 It contains dynamic search bar where the application dynamically shows the list of universities as you type in input box.
 One of the API is reserved for this application.
