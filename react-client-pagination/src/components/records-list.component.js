@@ -308,7 +308,7 @@ class RecordsList extends Component {
                   <select id="State" className="form-control" onChange={this.onChangeState}
                   value = {searchState}
                   >
-                      {<option hidden value="" style={{color:'#ced4da !important'}}>Select State</option>}
+                      {<option hidden value="">Select State</option>}
                         {states.map(item => (
                         <option key={item.abbreviation} value={item.name}>
                           {item.name}
