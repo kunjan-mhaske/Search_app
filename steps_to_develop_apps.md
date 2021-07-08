@@ -109,3 +109,11 @@ Follow this page to create simple dynamic search bar:
 https://www.emgoto.com/react-search-bar/
 
 
+Project 3:
+
+Design a database ER diagram and schemas. Then set the queries to search.
+
+Create APIs for the customized filters in nodejs-express-sequelize-mysql backend folder.
+
+Duplicate project 1 and start implementing the services and modify the components.
+

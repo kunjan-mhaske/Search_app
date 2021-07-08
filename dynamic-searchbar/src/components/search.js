@@ -76,9 +76,9 @@ class SearchBar extends Component {
                     options={currentRecord}
                     getOptionLabel={option => option.School_Name}
                     // Group by first letter of name
-                    groupBy={(option) => option.School_Name.charAt(0)}
+                    // groupBy={(option) => option.School_Name.charAt(0)}
                     noOptionsText={"No results found.."}
-                    onChange={this.onSearchQuery1}
+                    onChange={this.onSearchQuery}
                     renderInput={(params) => 
                         <TextField {...params} 
                           label="University Search" 
