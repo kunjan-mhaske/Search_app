@@ -29,12 +29,41 @@ class NonProfitRecords extends Component{
         });
     }
 
+    doSearch(){
+      
+    }
+
     // render the HTML block
     render () {
         const { searchName } = this.state;
 
         return (
-            <div></div>
+            <div className="list row main-section">
+              <div className="container">
+                <div className="row">
+                  <div className="form-group">
+                    <label>Non-Profit Name</label>
+                    <input type="text" name="npname" id="npname" 
+                      className="form-control" placeholder="Enter name"
+                      value={searchName} onChange={this.onChangeSearchName}/>
+                  </div>
+                  <div className="text-center">
+                    <div className="input-group-append">
+                      <button className="btn btn-outline-secondary" 
+                        type="submit" onClick={this.doSearch}>
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="form-group">
+                    <label>Filters</label>
+
+                  </div>
+                </div>
+              </div>
+            </div>
         );
     }
 }
