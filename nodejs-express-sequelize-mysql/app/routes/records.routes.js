@@ -29,6 +29,9 @@ module.exports = app => {
     // delete all records
     // router.delete("/", records.deleteAll);
 
+    // retrieve all non profit records with name
+    router.get("/non-profits", records.findAllNonProfits);
+
     app.use("/api/records", router);
 
 };

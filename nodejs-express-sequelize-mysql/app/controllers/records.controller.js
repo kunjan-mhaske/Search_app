@@ -1,5 +1,6 @@
 const db = require("../models");
-const Records = db.records;
+const SchoolRecords = db.school_records;
+const NpRecords = db.np_records;
 const Op = db.Sequelize.Op;
 
 // For default pagination part: if client dont provide paging parameters
@@ -18,38 +19,6 @@ const getPagingData = (data, page, limit) => {
   return {totalItems, records, totalPages, currentPage};
 };
 
-// create and save new record
-// exports.create = (req, res) => {
-//   // Validate request
-//   if (!req.body.school_name) {
-//     res.status(400).send({
-//       message: "School name can not be empty!"
-//     });
-//     return;
-//   }
-
-  // Create a record
-  // const record = {
-  //   URL : req.body.school_url,
-  //   School_name: req.body.school_name,
-  //   City: req.body.school_city,
-  //   State: req.body.school_state,
-  //   Zip: req.body.school_zip
-  // };
-
-  // Save a record in the database
-//   Records.create(record)
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while creating the record."
-//       });
-//     });
-// };
-
 // retrieve all records based on the school name for Dynamic search bar
 exports.findAllDynamic = (req, res) => {
   const school_name = req.query.school_name;
@@ -59,7 +28,7 @@ exports.findAllDynamic = (req, res) => {
   // Get results in ascending order of school name
   const ordering = [['School_Name', 'ASC']];
 
-  Records.findAll({ where: condition, order: ordering })
+  SchoolRecords.findAll({ where: condition, order: ordering })
     .then(data => {
       const response = data;
       res.send(response);
@@ -87,7 +56,7 @@ exports.findAll = (req, res) => {
     // Get results in ascending order of school name
     const ordering = [['School_Name', 'ASC']];
   
-    Records.findAndCountAll({ where: condition, order: ordering, limit, offset })
+    SchoolRecords.findAndCountAll({ where: condition, order: ordering, limit, offset })
       .then(data => {
         const response = getPagingData(data, page, limit);
         res.send(response);
@@ -113,7 +82,7 @@ exports.findAllSchools = (req, res) => {
   // Get results in ascending order of school name
   const ordering = [['School_Name', 'ASC']];
 
-  Records.findAndCountAll({ 
+  SchoolRecords.findAndCountAll({ 
     where : condition,
     order: ordering,
     limit, offset
@@ -138,7 +107,7 @@ exports.findAllSchoolsZip = (req, res) => {
   // Get results in ascending order of school name
   const ordering = [['School_Name', 'ASC']];
 
-  Records.findAndCountAll({ 
+  SchoolRecords.findAndCountAll({ 
     where: { Zip: school_zip }, order: ordering, limit, offset })
   .then(data => {
     const response = getPagingData(data, page, limit);
@@ -156,7 +125,7 @@ exports.findAllSchoolsZip = (req, res) => {
 exports.findOne = (req, res) => {
     const school_id = req.params.school_id;
 
-    Records.findByPk(school_id)
+    SchoolRecords.findByPk(school_id)
       .then(data => {
         res.send(data);
       })
@@ -167,68 +136,26 @@ exports.findOne = (req, res) => {
       });
 };
 
-// Update a record by the id in the request
-// exports.update = (req, res) => {
-//     const school_id = req.params.school_id;
-//     Records.update(req.body, {
-//       where: { School_id: school_id }
-//     })
-//       .then(num => {
-//         if (num == 1) {
-//           res.send({
-//             message: "Record was updated successfully."
-//           });
-//         } else {
-//           res.send({
-//             message: `Cannot update record with id=${school_id}. Maybe record was not found or req.body is empty!`
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Error updating record with id=" + school_id
-//         });
-//       });
-// };
+exports.findAllNonProfits = (req, res) => {
+  const { page, size, np_name } = req.query;
+  var condition = np_name ? { 
+                    np_name: { [Op.like]: `%${np_name}%` } 
+                  } : null;
+  
+  const {limit, offset } = getPagination(page, size);
 
-// Delete a record with the specified id in the request
-// exports.delete = (req, res) => {
-//     const school_id = req.params.school_id;
+  // Get results in ascending order of non-profit name
+  const ordering = [['np_name', 'ASC']];
 
-//     Records.destroy({
-//       where: { School_id: school_id }
-//     })
-//       .then(num => {
-//         if (num == 1) {
-//           res.send({
-//             message: "Record was deleted successfully!"
-//           });
-//         } else {
-//           res.send({
-//             message: `Cannot delete record with id=${school_id}. Maybe record was not found!`
-//           });
-//         }
-//       })
-//       .catch(err => {
-//         res.status(500).send({
-//           message: "Could not delete record with id=" + school_id
-//         });
-//       });
-// };
-
-// Delete all records from the database.
-// exports.deleteAll = (req, res) => {
-//     Records.destroy({
-//         where: {},
-//         truncate: false
-//       })
-//         .then(nums => {
-//           res.send({ message: `${nums} Records were deleted successfully!` });
-//         })
-//         .catch(err => {
-//           res.status(500).send({
-//             message:
-//               err.message || "Some error occurred while removing all records."
-//           });
-//         });
-// };
+  NpRecords.findAndCountAll({ where: condition, order: ordering, limit, offset })
+    .then(data => {
+      const response = getPagingData(data, page, limit);
+      res.send(response);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving records."
+      });
+    });
+};

@@ -1,0 +1,266 @@
+np_name,city,state,zip,cause,ethnic,url_ctp
+Changing The Present,Rochester,New York,14623,Cause_1,Ethnic_1,https://changingthepresent.org
+R_CtP,Rochester,New York,16614,Cause_19,Ethnic_44,https://changingthepresent.org/r_ctp
+L_Global Sea,Rochester,New York,25638,Cause_11,Ethnic_54,https://changingthepresent.org/l_global sea
+F_We Are CtP,Rochester,New York,22352,Cause_0,Ethnic_66,https://changingthepresent.org/f_we are ctp
+I_CtP Global,Rochester,New York,18493,Cause_0,Ethnic_42,https://changingthepresent.org/i_ctp global
+Y_CtP,Downtown,New York,20831,Cause_4,Ethnic_59,https://changingthepresent.org/y_ctp
+A_Global Sea,Downtown,New York,23234,Cause_1,Ethnic_55,https://changingthepresent.org/a_global sea
+U_We Are CtP,Downtown,New York,15545,Cause_0,Ethnic_50,https://changingthepresent.org/u_we are ctp
+J_CtP Global,Downtown,New York,19256,Cause_19,Ethnic_54,https://changingthepresent.org/j_ctp global
+V_CtP,Suburban,New York,19366,Cause_15,Ethnic_41,https://changingthepresent.org/v_ctp
+M_Global Sea,Suburban,New York,15772,Cause_19,Ethnic_58,https://changingthepresent.org/m_global sea
+I_We Are CtP,Suburban,New York,22969,Cause_0,Ethnic_57,https://changingthepresent.org/i_we are ctp
+H_CtP Global,Suburban,New York,17785,Cause_28,Ethnic_52,https://changingthepresent.org/h_ctp global
+S_CtP,Monroe,New York,22808,Cause_16,Ethnic_69,https://changingthepresent.org/s_ctp
+U_Global Sea,Monroe,New York,25257,Cause_15,Ethnic_58,https://changingthepresent.org/u_global sea
+E_We Are CtP,Monroe,New York,14818,Cause_10,Ethnic_41,https://changingthepresent.org/e_we are ctp
+Z_CtP Global,Monroe,New York,14797,Cause_25,Ethnic_45,https://changingthepresent.org/z_ctp global
+F_CtP,Henrietta,New York,22600,Cause_15,Ethnic_42,https://changingthepresent.org/f_ctp
+A_Global Sea,Henrietta,New York,21479,Cause_0,Ethnic_53,https://changingthepresent.org/a_global sea
+L_We Are CtP,Henrietta,New York,16646,Cause_14,Ethnic_51,https://changingthepresent.org/l_we are ctp
+Q_CtP Global,Henrietta,New York,15439,Cause_11,Ethnic_49,https://changingthepresent.org/q_ctp global
+R_CtP,Brighton,New York,21953,Cause_25,Ethnic_65,https://changingthepresent.org/r_ctp
+P_Global Sea,Brighton,New York,24302,Cause_18,Ethnic_50,https://changingthepresent.org/p_global sea
+P_We Are CtP,Brighton,New York,23990,Cause_23,Ethnic_64,https://changingthepresent.org/p_we are ctp
+Y_CtP Global,Brighton,New York,25972,Cause_24,Ethnic_55,https://changingthepresent.org/y_ctp global
+S_CtP,Rochester,Michigan,25385,Cause_9,Ethnic_50,https://changingthepresent.org/s_ctp
+U_Global Sea,Rochester,Michigan,20795,Cause_29,Ethnic_59,https://changingthepresent.org/u_global sea
+O_We Are CtP,Rochester,Michigan,22118,Cause_0,Ethnic_66,https://changingthepresent.org/o_we are ctp
+B_CtP Global,Rochester,Michigan,23595,Cause_8,Ethnic_46,https://changingthepresent.org/b_ctp global
+C_CtP,Downtown,Michigan,21202,Cause_3,Ethnic_63,https://changingthepresent.org/c_ctp
+C_Global Sea,Downtown,Michigan,20156,Cause_10,Ethnic_65,https://changingthepresent.org/c_global sea
+Y_We Are CtP,Downtown,Michigan,22543,Cause_12,Ethnic_55,https://changingthepresent.org/y_we are ctp
+C_CtP Global,Downtown,Michigan,18978,Cause_17,Ethnic_65,https://changingthepresent.org/c_ctp global
+Q_CtP,Suburban,Michigan,19948,Cause_19,Ethnic_60,https://changingthepresent.org/q_ctp
+L_Global Sea,Suburban,Michigan,16245,Cause_0,Ethnic_55,https://changingthepresent.org/l_global sea
+N_We Are CtP,Suburban,Michigan,16795,Cause_10,Ethnic_41,https://changingthepresent.org/n_we are ctp
+T_CtP Global,Suburban,Michigan,16767,Cause_7,Ethnic_49,https://changingthepresent.org/t_ctp global
+Q_CtP,Monroe,Michigan,22217,Cause_24,Ethnic_40,https://changingthepresent.org/q_ctp
+G_Global Sea,Monroe,Michigan,23948,Cause_7,Ethnic_58,https://changingthepresent.org/g_global sea
+E_We Are CtP,Monroe,Michigan,23268,Cause_16,Ethnic_66,https://changingthepresent.org/e_we are ctp
+O_CtP Global,Monroe,Michigan,25335,Cause_0,Ethnic_41,https://changingthepresent.org/o_ctp global
+S_CtP,Henrietta,Michigan,23647,Cause_17,Ethnic_67,https://changingthepresent.org/s_ctp
+L_Global Sea,Henrietta,Michigan,15957,Cause_4,Ethnic_55,https://changingthepresent.org/l_global sea
+O_We Are CtP,Henrietta,Michigan,17859,Cause_12,Ethnic_68,https://changingthepresent.org/o_we are ctp
+U_CtP Global,Henrietta,Michigan,21317,Cause_29,Ethnic_55,https://changingthepresent.org/u_ctp global
+Z_CtP,Brighton,Michigan,19503,Cause_13,Ethnic_62,https://changingthepresent.org/z_ctp
+H_Global Sea,Brighton,Michigan,23438,Cause_14,Ethnic_45,https://changingthepresent.org/h_global sea
+E_We Are CtP,Brighton,Michigan,15457,Cause_20,Ethnic_53,https://changingthepresent.org/e_we are ctp
+T_CtP Global,Brighton,Michigan,21176,Cause_6,Ethnic_56,https://changingthepresent.org/t_ctp global
+F_CtP,Rochester,New Jersey,18662,Cause_29,Ethnic_48,https://changingthepresent.org/f_ctp
+W_Global Sea,Rochester,New Jersey,15728,Cause_28,Ethnic_45,https://changingthepresent.org/w_global sea
+P_We Are CtP,Rochester,New Jersey,18892,Cause_7,Ethnic_46,https://changingthepresent.org/p_we are ctp
+R_CtP Global,Rochester,New Jersey,18249,Cause_3,Ethnic_60,https://changingthepresent.org/r_ctp global
+Q_CtP,Downtown,New Jersey,19326,Cause_19,Ethnic_58,https://changingthepresent.org/q_ctp
+Y_Global Sea,Downtown,New Jersey,14825,Cause_16,Ethnic_68,https://changingthepresent.org/y_global sea
+G_We Are CtP,Downtown,New Jersey,23852,Cause_11,Ethnic_64,https://changingthepresent.org/g_we are ctp
+P_CtP Global,Downtown,New Jersey,25695,Cause_7,Ethnic_67,https://changingthepresent.org/p_ctp global
+J_CtP,Suburban,New Jersey,16850,Cause_0,Ethnic_51,https://changingthepresent.org/j_ctp
+S_Global Sea,Suburban,New Jersey,19373,Cause_25,Ethnic_53,https://changingthepresent.org/s_global sea
+G_We Are CtP,Suburban,New Jersey,16674,Cause_25,Ethnic_66,https://changingthepresent.org/g_we are ctp
+W_CtP Global,Suburban,New Jersey,14472,Cause_11,Ethnic_54,https://changingthepresent.org/w_ctp global
+A_CtP,Monroe,New Jersey,24123,Cause_27,Ethnic_69,https://changingthepresent.org/a_ctp
+W_Global Sea,Monroe,New Jersey,22811,Cause_19,Ethnic_48,https://changingthepresent.org/w_global sea
+K_We Are CtP,Monroe,New Jersey,25485,Cause_7,Ethnic_56,https://changingthepresent.org/k_we are ctp
+V_CtP Global,Monroe,New Jersey,24666,Cause_16,Ethnic_63,https://changingthepresent.org/v_ctp global
+Z_CtP,Henrietta,New Jersey,24209,Cause_26,Ethnic_65,https://changingthepresent.org/z_ctp
+M_Global Sea,Henrietta,New Jersey,14318,Cause_15,Ethnic_56,https://changingthepresent.org/m_global sea
+G_We Are CtP,Henrietta,New Jersey,20155,Cause_20,Ethnic_59,https://changingthepresent.org/g_we are ctp
+M_CtP Global,Henrietta,New Jersey,24479,Cause_12,Ethnic_45,https://changingthepresent.org/m_ctp global
+Y_CtP,Brighton,New Jersey,23240,Cause_16,Ethnic_69,https://changingthepresent.org/y_ctp
+B_Global Sea,Brighton,New Jersey,20754,Cause_29,Ethnic_47,https://changingthepresent.org/b_global sea
+W_We Are CtP,Brighton,New Jersey,17276,Cause_13,Ethnic_55,https://changingthepresent.org/w_we are ctp
+J_CtP Global,Brighton,New Jersey,21679,Cause_23,Ethnic_48,https://changingthepresent.org/j_ctp global
+R_CtP,Rochester,Ohio,14350,Cause_6,Ethnic_63,https://changingthepresent.org/r_ctp
+V_Global Sea,Rochester,Ohio,14865,Cause_21,Ethnic_43,https://changingthepresent.org/v_global sea
+K_We Are CtP,Rochester,Ohio,23195,Cause_21,Ethnic_51,https://changingthepresent.org/k_we are ctp
+G_CtP Global,Rochester,Ohio,16244,Cause_3,Ethnic_52,https://changingthepresent.org/g_ctp global
+G_CtP,Downtown,Ohio,22352,Cause_28,Ethnic_51,https://changingthepresent.org/g_ctp
+F_Global Sea,Downtown,Ohio,15904,Cause_3,Ethnic_46,https://changingthepresent.org/f_global sea
+T_We Are CtP,Downtown,Ohio,14553,Cause_10,Ethnic_58,https://changingthepresent.org/t_we are ctp
+I_CtP Global,Downtown,Ohio,25713,Cause_14,Ethnic_52,https://changingthepresent.org/i_ctp global
+D_CtP,Suburban,Ohio,23704,Cause_1,Ethnic_46,https://changingthepresent.org/d_ctp
+B_Global Sea,Suburban,Ohio,14836,Cause_23,Ethnic_48,https://changingthepresent.org/b_global sea
+Y_We Are CtP,Suburban,Ohio,20994,Cause_8,Ethnic_62,https://changingthepresent.org/y_we are ctp
+B_CtP Global,Suburban,Ohio,14454,Cause_19,Ethnic_53,https://changingthepresent.org/b_ctp global
+R_CtP,Monroe,Ohio,16662,Cause_13,Ethnic_64,https://changingthepresent.org/r_ctp
+W_Global Sea,Monroe,Ohio,18636,Cause_22,Ethnic_50,https://changingthepresent.org/w_global sea
+B_We Are CtP,Monroe,Ohio,14512,Cause_12,Ethnic_57,https://changingthepresent.org/b_we are ctp
+K_CtP Global,Monroe,Ohio,21639,Cause_24,Ethnic_62,https://changingthepresent.org/k_ctp global
+G_CtP,Henrietta,Ohio,18437,Cause_11,Ethnic_63,https://changingthepresent.org/g_ctp
+A_Global Sea,Henrietta,Ohio,19415,Cause_24,Ethnic_52,https://changingthepresent.org/a_global sea
+R_We Are CtP,Henrietta,Ohio,21861,Cause_25,Ethnic_45,https://changingthepresent.org/r_we are ctp
+I_CtP Global,Henrietta,Ohio,24890,Cause_21,Ethnic_51,https://changingthepresent.org/i_ctp global
+H_CtP,Brighton,Ohio,20777,Cause_13,Ethnic_47,https://changingthepresent.org/h_ctp
+U_Global Sea,Brighton,Ohio,18427,Cause_20,Ethnic_51,https://changingthepresent.org/u_global sea
+M_We Are CtP,Brighton,Ohio,16520,Cause_11,Ethnic_66,https://changingthepresent.org/m_we are ctp
+S_CtP Global,Brighton,Ohio,25972,Cause_4,Ethnic_68,https://changingthepresent.org/s_ctp global
+Q_CtP,Rochester,Virginia,22426,Cause_9,Ethnic_46,https://changingthepresent.org/q_ctp
+M_Global Sea,Rochester,Virginia,19785,Cause_5,Ethnic_47,https://changingthepresent.org/m_global sea
+U_We Are CtP,Rochester,Virginia,14430,Cause_0,Ethnic_48,https://changingthepresent.org/u_we are ctp
+Q_CtP Global,Rochester,Virginia,14979,Cause_9,Ethnic_52,https://changingthepresent.org/q_ctp global
+U_CtP,Downtown,Virginia,14905,Cause_26,Ethnic_53,https://changingthepresent.org/u_ctp
+G_Global Sea,Downtown,Virginia,15830,Cause_4,Ethnic_52,https://changingthepresent.org/g_global sea
+N_We Are CtP,Downtown,Virginia,14616,Cause_9,Ethnic_65,https://changingthepresent.org/n_we are ctp
+A_CtP Global,Downtown,Virginia,24386,Cause_9,Ethnic_62,https://changingthepresent.org/a_ctp global
+Z_CtP,Suburban,Virginia,24156,Cause_21,Ethnic_59,https://changingthepresent.org/z_ctp
+A_Global Sea,Suburban,Virginia,24365,Cause_20,Ethnic_46,https://changingthepresent.org/a_global sea
+U_We Are CtP,Suburban,Virginia,22675,Cause_15,Ethnic_66,https://changingthepresent.org/u_we are ctp
+Z_CtP Global,Suburban,Virginia,19208,Cause_27,Ethnic_62,https://changingthepresent.org/z_ctp global
+B_CtP,Monroe,Virginia,19285,Cause_16,Ethnic_60,https://changingthepresent.org/b_ctp
+U_Global Sea,Monroe,Virginia,16587,Cause_25,Ethnic_59,https://changingthepresent.org/u_global sea
+X_We Are CtP,Monroe,Virginia,24175,Cause_17,Ethnic_63,https://changingthepresent.org/x_we are ctp
+N_CtP Global,Monroe,Virginia,19800,Cause_17,Ethnic_53,https://changingthepresent.org/n_ctp global
+X_CtP,Henrietta,Virginia,15686,Cause_7,Ethnic_52,https://changingthepresent.org/x_ctp
+R_Global Sea,Henrietta,Virginia,15805,Cause_22,Ethnic_48,https://changingthepresent.org/r_global sea
+W_We Are CtP,Henrietta,Virginia,23787,Cause_0,Ethnic_45,https://changingthepresent.org/w_we are ctp
+X_CtP Global,Henrietta,Virginia,19822,Cause_26,Ethnic_57,https://changingthepresent.org/x_ctp global
+R_CtP,Brighton,Virginia,14651,Cause_13,Ethnic_40,https://changingthepresent.org/r_ctp
+F_Global Sea,Brighton,Virginia,16307,Cause_10,Ethnic_57,https://changingthepresent.org/f_global sea
+B_We Are CtP,Brighton,Virginia,14497,Cause_29,Ethnic_64,https://changingthepresent.org/b_we are ctp
+M_CtP Global,Brighton,Virginia,14346,Cause_28,Ethnic_56,https://changingthepresent.org/m_ctp global
+D_CtP,Rochester,Washington,15719,Cause_13,Ethnic_50,https://changingthepresent.org/d_ctp
+K_Global Sea,Rochester,Washington,17215,Cause_0,Ethnic_57,https://changingthepresent.org/k_global sea
+O_We Are CtP,Rochester,Washington,21512,Cause_15,Ethnic_57,https://changingthepresent.org/o_we are ctp
+H_CtP Global,Rochester,Washington,24328,Cause_5,Ethnic_58,https://changingthepresent.org/h_ctp global
+D_CtP,Downtown,Washington,21198,Cause_12,Ethnic_52,https://changingthepresent.org/d_ctp
+I_Global Sea,Downtown,Washington,25787,Cause_16,Ethnic_41,https://changingthepresent.org/i_global sea
+K_We Are CtP,Downtown,Washington,17991,Cause_4,Ethnic_41,https://changingthepresent.org/k_we are ctp
+Y_CtP Global,Downtown,Washington,16217,Cause_17,Ethnic_53,https://changingthepresent.org/y_ctp global
+H_CtP,Suburban,Washington,18286,Cause_16,Ethnic_53,https://changingthepresent.org/h_ctp
+O_Global Sea,Suburban,Washington,16919,Cause_27,Ethnic_44,https://changingthepresent.org/o_global sea
+M_We Are CtP,Suburban,Washington,21284,Cause_8,Ethnic_43,https://changingthepresent.org/m_we are ctp
+A_CtP Global,Suburban,Washington,18543,Cause_1,Ethnic_68,https://changingthepresent.org/a_ctp global
+O_CtP,Monroe,Washington,22397,Cause_1,Ethnic_47,https://changingthepresent.org/o_ctp
+U_Global Sea,Monroe,Washington,17384,Cause_17,Ethnic_55,https://changingthepresent.org/u_global sea
+T_We Are CtP,Monroe,Washington,23179,Cause_17,Ethnic_69,https://changingthepresent.org/t_we are ctp
+O_CtP Global,Monroe,Washington,23156,Cause_1,Ethnic_45,https://changingthepresent.org/o_ctp global
+T_CtP,Henrietta,Washington,25220,Cause_13,Ethnic_67,https://changingthepresent.org/t_ctp
+P_Global Sea,Henrietta,Washington,24994,Cause_8,Ethnic_65,https://changingthepresent.org/p_global sea
+T_We Are CtP,Henrietta,Washington,24163,Cause_0,Ethnic_67,https://changingthepresent.org/t_we are ctp
+P_CtP Global,Henrietta,Washington,14822,Cause_8,Ethnic_59,https://changingthepresent.org/p_ctp global
+Y_CtP,Brighton,Washington,22524,Cause_2,Ethnic_68,https://changingthepresent.org/y_ctp
+P_Global Sea,Brighton,Washington,17519,Cause_14,Ethnic_67,https://changingthepresent.org/p_global sea
+W_We Are CtP,Brighton,Washington,19828,Cause_15,Ethnic_48,https://changingthepresent.org/w_we are ctp
+P_CtP Global,Brighton,Washington,22811,Cause_4,Ethnic_68,https://changingthepresent.org/p_ctp global
+H_CtP,Rochester,Colombo,23289,Cause_29,Ethnic_61,https://changingthepresent.org/h_ctp
+J_Global Sea,Rochester,Colombo,24296,Cause_11,Ethnic_45,https://changingthepresent.org/j_global sea
+D_We Are CtP,Rochester,Colombo,20370,Cause_2,Ethnic_64,https://changingthepresent.org/d_we are ctp
+K_CtP Global,Rochester,Colombo,15662,Cause_11,Ethnic_55,https://changingthepresent.org/k_ctp global
+Y_CtP,Downtown,Colombo,22775,Cause_14,Ethnic_64,https://changingthepresent.org/y_ctp
+S_Global Sea,Downtown,Colombo,19994,Cause_8,Ethnic_40,https://changingthepresent.org/s_global sea
+A_We Are CtP,Downtown,Colombo,23476,Cause_8,Ethnic_44,https://changingthepresent.org/a_we are ctp
+H_CtP Global,Downtown,Colombo,19214,Cause_4,Ethnic_69,https://changingthepresent.org/h_ctp global
+L_CtP,Suburban,Colombo,22387,Cause_7,Ethnic_48,https://changingthepresent.org/l_ctp
+Y_Global Sea,Suburban,Colombo,20137,Cause_2,Ethnic_59,https://changingthepresent.org/y_global sea
+S_We Are CtP,Suburban,Colombo,15775,Cause_12,Ethnic_40,https://changingthepresent.org/s_we are ctp
+Z_CtP Global,Suburban,Colombo,25406,Cause_14,Ethnic_48,https://changingthepresent.org/z_ctp global
+B_CtP,Monroe,Colombo,17272,Cause_11,Ethnic_60,https://changingthepresent.org/b_ctp
+G_Global Sea,Monroe,Colombo,18334,Cause_26,Ethnic_55,https://changingthepresent.org/g_global sea
+I_We Are CtP,Monroe,Colombo,25383,Cause_4,Ethnic_44,https://changingthepresent.org/i_we are ctp
+M_CtP Global,Monroe,Colombo,14867,Cause_27,Ethnic_47,https://changingthepresent.org/m_ctp global
+F_CtP,Henrietta,Colombo,23837,Cause_4,Ethnic_64,https://changingthepresent.org/f_ctp
+C_Global Sea,Henrietta,Colombo,20122,Cause_21,Ethnic_61,https://changingthepresent.org/c_global sea
+M_We Are CtP,Henrietta,Colombo,20800,Cause_19,Ethnic_67,https://changingthepresent.org/m_we are ctp
+J_CtP Global,Henrietta,Colombo,22742,Cause_2,Ethnic_62,https://changingthepresent.org/j_ctp global
+I_CtP,Brighton,Colombo,18846,Cause_6,Ethnic_69,https://changingthepresent.org/i_ctp
+R_Global Sea,Brighton,Colombo,14525,Cause_2,Ethnic_40,https://changingthepresent.org/r_global sea
+H_We Are CtP,Brighton,Colombo,21722,Cause_18,Ethnic_44,https://changingthepresent.org/h_we are ctp
+H_CtP Global,Brighton,Colombo,25568,Cause_6,Ethnic_61,https://changingthepresent.org/h_ctp global
+V_CtP,Rochester,Texas,17441,Cause_8,Ethnic_57,https://changingthepresent.org/v_ctp
+V_Global Sea,Rochester,Texas,14199,Cause_12,Ethnic_59,https://changingthepresent.org/v_global sea
+T_We Are CtP,Rochester,Texas,15813,Cause_9,Ethnic_46,https://changingthepresent.org/t_we are ctp
+L_CtP Global,Rochester,Texas,18171,Cause_7,Ethnic_67,https://changingthepresent.org/l_ctp global
+B_CtP,Downtown,Texas,22251,Cause_20,Ethnic_44,https://changingthepresent.org/b_ctp
+K_Global Sea,Downtown,Texas,14961,Cause_22,Ethnic_55,https://changingthepresent.org/k_global sea
+R_We Are CtP,Downtown,Texas,19540,Cause_25,Ethnic_59,https://changingthepresent.org/r_we are ctp
+Q_CtP Global,Downtown,Texas,22329,Cause_23,Ethnic_67,https://changingthepresent.org/q_ctp global
+C_CtP,Suburban,Texas,21573,Cause_12,Ethnic_44,https://changingthepresent.org/c_ctp
+Q_Global Sea,Suburban,Texas,18993,Cause_28,Ethnic_52,https://changingthepresent.org/q_global sea
+J_We Are CtP,Suburban,Texas,15381,Cause_13,Ethnic_60,https://changingthepresent.org/j_we are ctp
+U_CtP Global,Suburban,Texas,22761,Cause_27,Ethnic_56,https://changingthepresent.org/u_ctp global
+F_CtP,Monroe,Texas,17938,Cause_10,Ethnic_45,https://changingthepresent.org/f_ctp
+X_Global Sea,Monroe,Texas,17834,Cause_21,Ethnic_45,https://changingthepresent.org/x_global sea
+H_We Are CtP,Monroe,Texas,25783,Cause_11,Ethnic_42,https://changingthepresent.org/h_we are ctp
+K_CtP Global,Monroe,Texas,18778,Cause_21,Ethnic_44,https://changingthepresent.org/k_ctp global
+X_CtP,Henrietta,Texas,24173,Cause_0,Ethnic_45,https://changingthepresent.org/x_ctp
+L_Global Sea,Henrietta,Texas,20950,Cause_8,Ethnic_54,https://changingthepresent.org/l_global sea
+P_We Are CtP,Henrietta,Texas,21746,Cause_14,Ethnic_49,https://changingthepresent.org/p_we are ctp
+J_CtP Global,Henrietta,Texas,20770,Cause_1,Ethnic_42,https://changingthepresent.org/j_ctp global
+Y_CtP,Brighton,Texas,24387,Cause_3,Ethnic_59,https://changingthepresent.org/y_ctp
+P_Global Sea,Brighton,Texas,16839,Cause_20,Ethnic_46,https://changingthepresent.org/p_global sea
+O_We Are CtP,Brighton,Texas,17523,Cause_14,Ethnic_60,https://changingthepresent.org/o_we are ctp
+H_CtP Global,Brighton,Texas,20570,Cause_12,Ethnic_65,https://changingthepresent.org/h_ctp global
+R_CtP,Rochester,California,21514,Cause_28,Ethnic_66,https://changingthepresent.org/r_ctp
+P_Global Sea,Rochester,California,22362,Cause_18,Ethnic_69,https://changingthepresent.org/p_global sea
+G_We Are CtP,Rochester,California,21690,Cause_11,Ethnic_54,https://changingthepresent.org/g_we are ctp
+W_CtP Global,Rochester,California,23300,Cause_27,Ethnic_51,https://changingthepresent.org/w_ctp global
+M_CtP,Downtown,California,15962,Cause_9,Ethnic_54,https://changingthepresent.org/m_ctp
+E_Global Sea,Downtown,California,24145,Cause_29,Ethnic_69,https://changingthepresent.org/e_global sea
+I_We Are CtP,Downtown,California,14695,Cause_16,Ethnic_50,https://changingthepresent.org/i_we are ctp
+G_CtP Global,Downtown,California,15652,Cause_26,Ethnic_56,https://changingthepresent.org/g_ctp global
+E_CtP,Suburban,California,15273,Cause_14,Ethnic_67,https://changingthepresent.org/e_ctp
+O_Global Sea,Suburban,California,23696,Cause_21,Ethnic_63,https://changingthepresent.org/o_global sea
+Y_We Are CtP,Suburban,California,19176,Cause_22,Ethnic_40,https://changingthepresent.org/y_we are ctp
+L_CtP Global,Suburban,California,25398,Cause_7,Ethnic_51,https://changingthepresent.org/l_ctp global
+M_CtP,Monroe,California,25638,Cause_26,Ethnic_50,https://changingthepresent.org/m_ctp
+V_Global Sea,Monroe,California,22714,Cause_18,Ethnic_52,https://changingthepresent.org/v_global sea
+I_We Are CtP,Monroe,California,18787,Cause_18,Ethnic_63,https://changingthepresent.org/i_we are ctp
+E_CtP Global,Monroe,California,17473,Cause_6,Ethnic_59,https://changingthepresent.org/e_ctp global
+O_CtP,Henrietta,California,18511,Cause_19,Ethnic_59,https://changingthepresent.org/o_ctp
+F_Global Sea,Henrietta,California,23924,Cause_22,Ethnic_49,https://changingthepresent.org/f_global sea
+Y_We Are CtP,Henrietta,California,16274,Cause_0,Ethnic_40,https://changingthepresent.org/y_we are ctp
+N_CtP Global,Henrietta,California,15961,Cause_24,Ethnic_45,https://changingthepresent.org/n_ctp global
+G_CtP,Brighton,California,18315,Cause_2,Ethnic_63,https://changingthepresent.org/g_ctp
+A_Global Sea,Brighton,California,18328,Cause_1,Ethnic_42,https://changingthepresent.org/a_global sea
+W_We Are CtP,Brighton,California,20204,Cause_17,Ethnic_62,https://changingthepresent.org/w_we are ctp
+A_CtP Global,Brighton,California,16810,Cause_7,Ethnic_62,https://changingthepresent.org/a_ctp global
+T_CtP,Rochester,Arizona,15447,Cause_6,Ethnic_42,https://changingthepresent.org/t_ctp
+V_Global Sea,Rochester,Arizona,24347,Cause_12,Ethnic_50,https://changingthepresent.org/v_global sea
+I_We Are CtP,Rochester,Arizona,25291,Cause_0,Ethnic_45,https://changingthepresent.org/i_we are ctp
+L_CtP Global,Rochester,Arizona,16870,Cause_23,Ethnic_58,https://changingthepresent.org/l_ctp global
+H_CtP,Downtown,Arizona,21280,Cause_11,Ethnic_49,https://changingthepresent.org/h_ctp
+X_Global Sea,Downtown,Arizona,16622,Cause_0,Ethnic_41,https://changingthepresent.org/x_global sea
+L_We Are CtP,Downtown,Arizona,22203,Cause_1,Ethnic_62,https://changingthepresent.org/l_we are ctp
+Z_CtP Global,Downtown,Arizona,24941,Cause_18,Ethnic_67,https://changingthepresent.org/z_ctp global
+T_CtP,Suburban,Arizona,16829,Cause_28,Ethnic_53,https://changingthepresent.org/t_ctp
+S_Global Sea,Suburban,Arizona,21700,Cause_4,Ethnic_58,https://changingthepresent.org/s_global sea
+W_We Are CtP,Suburban,Arizona,25282,Cause_28,Ethnic_63,https://changingthepresent.org/w_we are ctp
+A_CtP Global,Suburban,Arizona,18708,Cause_25,Ethnic_64,https://changingthepresent.org/a_ctp global
+J_CtP,Monroe,Arizona,15501,Cause_27,Ethnic_51,https://changingthepresent.org/j_ctp
+R_Global Sea,Monroe,Arizona,21937,Cause_0,Ethnic_52,https://changingthepresent.org/r_global sea
+F_We Are CtP,Monroe,Arizona,18834,Cause_3,Ethnic_60,https://changingthepresent.org/f_we are ctp
+C_CtP Global,Monroe,Arizona,25674,Cause_8,Ethnic_44,https://changingthepresent.org/c_ctp global
+C_CtP,Henrietta,Arizona,23378,Cause_25,Ethnic_42,https://changingthepresent.org/c_ctp
+Q_Global Sea,Henrietta,Arizona,21268,Cause_18,Ethnic_62,https://changingthepresent.org/q_global sea
+F_We Are CtP,Henrietta,Arizona,16520,Cause_12,Ethnic_62,https://changingthepresent.org/f_we are ctp
+C_CtP Global,Henrietta,Arizona,19736,Cause_24,Ethnic_55,https://changingthepresent.org/c_ctp global
+R_CtP,Brighton,Arizona,16541,Cause_5,Ethnic_54,https://changingthepresent.org/r_ctp
+C_Global Sea,Brighton,Arizona,20844,Cause_29,Ethnic_45,https://changingthepresent.org/c_global sea
+C_We Are CtP,Brighton,Arizona,16563,Cause_1,Ethnic_55,https://changingthepresent.org/c_we are ctp
+Q_CtP Global,Brighton,Arizona,22612,Cause_3,Ethnic_62,https://changingthepresent.org/q_ctp global
+T_CtP,Rochester,Florida,21873,Cause_13,Ethnic_44,https://changingthepresent.org/t_ctp
+V_Global Sea,Rochester,Florida,19339,Cause_28,Ethnic_61,https://changingthepresent.org/v_global sea
+X_We Are CtP,Rochester,Florida,16186,Cause_25,Ethnic_40,https://changingthepresent.org/x_we are ctp
+K_CtP Global,Rochester,Florida,23243,Cause_11,Ethnic_60,https://changingthepresent.org/k_ctp global
+K_CtP,Downtown,Florida,23559,Cause_14,Ethnic_48,https://changingthepresent.org/k_ctp
+K_Global Sea,Downtown,Florida,18882,Cause_27,Ethnic_62,https://changingthepresent.org/k_global sea
+G_We Are CtP,Downtown,Florida,16220,Cause_3,Ethnic_49,https://changingthepresent.org/g_we are ctp
+O_CtP Global,Downtown,Florida,25595,Cause_11,Ethnic_53,https://changingthepresent.org/o_ctp global
+E_CtP,Suburban,Florida,18281,Cause_2,Ethnic_66,https://changingthepresent.org/e_ctp
+X_Global Sea,Suburban,Florida,20742,Cause_20,Ethnic_66,https://changingthepresent.org/x_global sea
+F_We Are CtP,Suburban,Florida,15214,Cause_5,Ethnic_46,https://changingthepresent.org/f_we are ctp
+N_CtP Global,Suburban,Florida,18985,Cause_14,Ethnic_60,https://changingthepresent.org/n_ctp global
+L_CtP,Monroe,Florida,18467,Cause_27,Ethnic_40,https://changingthepresent.org/l_ctp
+K_Global Sea,Monroe,Florida,25170,Cause_5,Ethnic_60,https://changingthepresent.org/k_global sea
+S_We Are CtP,Monroe,Florida,22169,Cause_27,Ethnic_68,https://changingthepresent.org/s_we are ctp
+R_CtP Global,Monroe,Florida,15873,Cause_14,Ethnic_50,https://changingthepresent.org/r_ctp global
+L_CtP,Henrietta,Florida,25223,Cause_1,Ethnic_50,https://changingthepresent.org/l_ctp
+P_Global Sea,Henrietta,Florida,21572,Cause_11,Ethnic_61,https://changingthepresent.org/p_global sea
+N_We Are CtP,Henrietta,Florida,17960,Cause_19,Ethnic_50,https://changingthepresent.org/n_we are ctp
+X_CtP Global,Henrietta,Florida,19764,Cause_23,Ethnic_46,https://changingthepresent.org/x_ctp global
+F_CtP,Brighton,Florida,23746,Cause_12,Ethnic_52,https://changingthepresent.org/f_ctp
+Z_Global Sea,Brighton,Florida,23582,Cause_0,Ethnic_64,https://changingthepresent.org/z_global sea
+G_We Are CtP,Brighton,Florida,25115,Cause_2,Ethnic_41,https://changingthepresent.org/g_we are ctp
+S_CtP Global,Brighton,Florida,17940,Cause_2,Ethnic_68,https://changingthepresent.org/s_ctp global

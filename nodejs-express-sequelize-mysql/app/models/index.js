@@ -27,5 +27,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD,
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.records = require("./records.model.js")(sequelize, Sequelize);
+db.school_records = require("./school_records.model.js")(sequelize, Sequelize);
+db.np_records = require("./np_records.model.js")(sequelize, Sequelize)
 module.exports = db;

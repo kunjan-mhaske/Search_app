@@ -1,6 +1,9 @@
 import { Route } from 'react-router-dom';
 import './App.css';
-import NonProfitRecords from './components/non-profit-records.component';
+import { styles } from "./css-common"
+import { withStyles } from '@material-ui/core';
+
+import NonProfitRecords from './components/np-records.component';
 
 function App() {
   return (
@@ -10,4 +13,5 @@ function App() {
   );
 }
 
-export default App;
+export default withStyles(styles)(App);
+

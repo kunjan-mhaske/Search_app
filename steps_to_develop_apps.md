@@ -117,3 +117,10 @@ Create APIs for the customized filters in nodejs-express-sequelize-mysql backend
 
 Duplicate project 1 and start implementing the services and modify the components.
 
+
+
+
+
+/// For Now:
+/// /// /// Generate a Different Table with all the attributes in one.
+/// /// /// Generate multiple separate tables for the filters.

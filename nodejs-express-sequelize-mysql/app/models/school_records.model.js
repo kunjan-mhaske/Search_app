@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Records = sequelize.define("records", {
+    const SchoolRecords = sequelize.define("records", {
         // school_id: { type: Sequelize.INTEGER },
         URL_CtP: { type: Sequelize.STRING },
         School_Name: { type: Sequelize.STRING },
@@ -11,6 +11,6 @@ module.exports = (sequelize, Sequelize) => {
         createdAt: false,
         updatedAt: false,
     } );
-    return Records;
+    return SchoolRecords;
     
 };
