@@ -91,5 +91,25 @@
   border: none;
   padding: .2rem .5rem !important;
 }
-
-
+.width-auto {
+  width:auto !important;
+}
+.margin-left-1 {
+  margin-left:1rem;
+}
+.filter-btn {
+    width: fit-content !important;
+    text-align: right;
+    float: right;
+    margin-left: auto;
+}
+.text-right {
+  text-align: right
+}
+.d-content {
+  display: contents !important;
+}
+a {
+  color: #296D80 !important;
+  cursor: pointer;
+}
