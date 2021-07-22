@@ -18,7 +18,7 @@ class NonProfitRecords extends Component {
     this.handlePageSizeChange = this.handlePageSizeChange.bind(this);
     this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.searchByName = this.searchByName.bind(this);
-
+    this.handlerDisplayFilters = this.handlerDisplayFilters.bind(this);
     // State to save and retrieve properties
     this.state = {
       records: [],
@@ -107,6 +107,7 @@ class NonProfitRecords extends Component {
       });
   }
 
+  // Display filters
   handlerDisplayFilters() {
     this.setState({ displayFilters: true });
   }
@@ -120,7 +121,7 @@ class NonProfitRecords extends Component {
           type="submit" onClick={this.handlerDisplayFilters}>
             Filter
           </button>
-        <div className="column" className="container">
+        <div className="column container">
           <div className="row">
             <div className="form-group">
               <label>Non-Profit Name</label>
