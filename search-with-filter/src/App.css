@@ -76,15 +76,15 @@
 .input-group>.form-control, .input-group>.form-select {
   position: relative;
   flex: 1 1 auto;
-  width: inherit !important;
+  /* width: inherit !important;
   min-width: 0;
-  margin-bottom: 0.7rem !important;
+  margin-bottom: 0.7rem !important; */
 }
 
 .btn-outline-secondary {
   color: #fff !important;
-  background-color: #296D80 !important;
-  border-color: #296D80 !important;
+  background-color: #0096fb !important;
+  border-color: #0096fb !important;
 }
 
 .table td {
@@ -110,6 +110,16 @@
   display: contents !important;
 }
 a {
-  color: #296D80 !important;
+  color: #0096fb  !important;
   cursor: pointer;
+}
+.pad-l-0 {
+  padding-left: 0px !important;
+
+}
+.pad-t-1 {
+  padding-top: 1rem;
+}
+.right {
+  float: right;
 }

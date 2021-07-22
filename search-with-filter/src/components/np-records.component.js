@@ -10,6 +10,8 @@ import { withStyles } from "@material-ui/core";
 // pagination
 import Pagination from "@material-ui/lab/Pagination";
 
+import { InputGroup, FormControl, Button, Container, Row, Col } from 'react-bootstrap';
+import { Multiselect } from "multiselect-react-dropdown";
 
 class NonProfitRecords extends Component {
   constructor(props) {
@@ -34,7 +36,14 @@ class NonProfitRecords extends Component {
       count: 0,
       pageSize: 100,
       total_records: 0,
-      displayFilters: false
+      displayFilters: false,
+
+      objectArray: [
+        { key: "Option 1", cat: "Group 1" },
+        { key: "Option 2", cat: "Group 1" },
+        { key: "Option 3", cat: "Group 1" },
+        { key: "Option 4", cat: "Group 2" }
+      ],
     };
   }
   // Call methods while loading the application
@@ -113,7 +122,7 @@ class NonProfitRecords extends Component {
   }
   // render the HTML block
   render() {
-    const { searchName, currentRecord, page, count, displayFilters } = this.state;
+    const { searchName, currentRecord, page, count, displayFilters, objectArray } = this.state;
 
     return (
       <div className="list row main-section">
@@ -121,7 +130,7 @@ class NonProfitRecords extends Component {
           type="submit" onClick={this.handlerDisplayFilters}>
             Filter
           </button>
-        <div className="column container">
+        {/* <div className="column container">
           <div className="row">
             <div className="form-group">
               <label>Non-Profit Name</label>
@@ -139,9 +148,21 @@ class NonProfitRecords extends Component {
               Search
             </button>
           </div>
-        </div>
+        </div> */}
 
-        {displayFilters === true &&
+          <label>Non-Profit Name</label>
+
+          <InputGroup>
+            <FormControl
+              placeholder="Non-Profit Name"
+              aria-label="Non-Profit Name"
+              value={searchName} onChange={this.onChangeSearchName}
+            />
+            <Button variant="outline-secondary" className="btn btn-outline-secondary"
+              type="submit" onClick={this.searchByName}>Search</Button>
+          </InputGroup>
+
+        {/* {displayFilters === true &&
           <div>
             <div className="row d-content">
               <div className="form-group width-auto">
@@ -149,6 +170,7 @@ class NonProfitRecords extends Component {
                 <input type="text" name="npname" id="npname"
                   className="form-control" placeholder="Enter state" />
               </div>
+              
               <div className="form-group width-auto">
                 <label>Cause</label>
                 <input type="text" name="npname" id="npname"
@@ -165,6 +187,72 @@ class NonProfitRecords extends Component {
                 <a> Reset </a>
             </div>
           </div>
+        } */}
+         {displayFilters === true &&
+          // <div>
+          //   <div className="row d-content">
+          //     <label>State</label>
+          //     <Multiselect
+          //         options={objectArray}
+          //         displayValue="key"
+          //         showCheckbox={true}
+          //     />              
+          //     <div className="form-group width-auto">
+          //       <label>Cause</label>
+          //       <input type="text" name="npname" id="npname"
+          //         className="form-control" placeholder="Enter cause" />
+          //     </div>
+          //     <div className="form-group width-auto">
+          //       <label>Ethnic</label>
+          //       <input type="text" name="npname" id="npname"
+          //         className="form-control" placeholder="Enter ethnic" />
+          //     </div>
+          //   </div>
+          //   <div className="text-right">
+          //     <a> Apply </a> &nbsp;
+          //       <a> Reset </a>
+          //   </div>
+          // </div>
+
+          <Container>
+            <Row className="pad-t-1"> 
+              <Col className="pad-l-0">
+                <div className="row d-content">
+                  <label>State</label>
+                  <Multiselect
+                      options={objectArray}
+                      displayValue="key"
+                      showCheckbox={true}
+                  />
+                </div>
+              </Col>
+              <Col className="pad-l-0">
+                <div className="row d-content">
+                  <label>Cause</label>
+                  <Multiselect
+                      options={objectArray}
+                      displayValue="key"
+                      showCheckbox={true}
+                  />
+                </div>
+              </Col>
+              <Col className="pad-l-0">
+                <div className="row d-content">
+                  <label>Ethnic</label>
+                  <Multiselect
+                      options={objectArray}
+                      displayValue="key"
+                      showCheckbox={true}
+                  />
+                </div>
+              </Col>
+            </Row>
+
+            <div className="right"> 
+              <a> Apply </a> &nbsp;
+              <a> Reset </a>
+            </div>
+          </Container>
         }
         {currentRecord !== '' &&
           <div className="col-md-12">
