@@ -23,7 +23,6 @@ class NonProfitRecords extends Component {
     this.handlerDisplayFilters = this.handlerDisplayFilters.bind(this);
 
     // multiselect methods
-    this.multiselectRef = React.createRef();
     this.loadFilters = this.loadFilters.bind(this);
     this.applyFilters = this.applyFilters.bind(this);
     this.resetFilters = this.resetFilters.bind(this);
@@ -160,7 +159,9 @@ class NonProfitRecords extends Component {
   // Toggle Display filters 
   handlerDisplayFilters() {
     const { displayFilters } = this.state;
-    this.setState({ displayFilters: !displayFilters });
+    this.setState({ 
+      displayFilters: !displayFilters 
+    });
   }
 
   // Get all selected states
@@ -236,11 +237,11 @@ class NonProfitRecords extends Component {
 
   // Reset the selections in filter
   resetFilters(){
-
-    console.log(this.state);
-
-    this.multiselectRef.current.resetSelectedValues();
+    const { displayFilters, currentRecord } = this.state;
     this.setState({
+      displayFilters: !displayFilters,
+      records: currentRecord,
+      total_records: currentRecord.length,
       selectedStates: [],
       selectedCauses: [],
       selectedEthnics: []
@@ -249,7 +250,7 @@ class NonProfitRecords extends Component {
 
   // render the HTML block
   render() {
-    const { searchName, currentRecord, page, count, displayFilters, records } = this.state;
+    const { searchName, page, count, displayFilters, currentRecord, records } = this.state;
     const { state, cause, ethnic } = this.state.filters;
 
     return (
@@ -269,6 +270,7 @@ class NonProfitRecords extends Component {
               type="" onClick={this.handlerDisplayFilters}>Filters</Button>
           </InputGroup>
           
+          {this.state.displayFilters === true &&
           <Container className={displayFilters ? null : "d-none"}>
             <Row className="pad-t-1"> 
               <Col className="pad-l-0">
@@ -328,8 +330,9 @@ class NonProfitRecords extends Component {
               <a> Reset </a> */}
             </div>
           </Container>
+          }
 
-        {records.length !== 0 &&
+        {(records.length !== 0 || currentRecord.length !==0 )&&
           <div className="col-md-12">
             <h4>Non-Profits List</h4>
             {this.state.total_records !== 1 && <p>Total {this.state.total_records} records found.</p>}
