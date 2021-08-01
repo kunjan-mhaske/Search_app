@@ -21,14 +21,27 @@ class NonProfitRecords extends Component {
     this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.searchByName = this.searchByName.bind(this);
     this.handlerDisplayFilters = this.handlerDisplayFilters.bind(this);
+
+    // multiselect methods
+    this.multiselectRef = React.createRef();
+    this.loadFilters = this.loadFilters.bind(this);
+    this.applyFilters = this.applyFilters.bind(this);
+    this.resetFilters = this.resetFilters.bind(this);
+    this.onSelectStates = this.onSelectStates.bind(this);
+    this.onSelectCauses = this.onSelectCauses.bind(this);
+    this.onSelectEthnics = this.onSelectEthnics.bind(this);
+    this.onRemoveStates = this.onRemoveStates.bind(this);
+    this.onRemoveCauses = this.onRemoveCauses.bind(this);
+    this.onRemoveEthnics = this.onRemoveEthnics.bind(this);
+
     // State to save and retrieve properties
     this.state = {
       records: [],
-      currentRecord: '',
+      currentRecord: "",
       searchName: "",
       searchCity: "",
       searchState: "",
-      searchZip: '',
+      searchZip: "",
       searchCause: "",
       searchEthnic: "",
 
@@ -38,17 +51,24 @@ class NonProfitRecords extends Component {
       total_records: 0,
       displayFilters: false,
 
-      objectArray: [
-        { key: "Option 1", cat: "Group 1" },
-        { key: "Option 2", cat: "Group 1" },
-        { key: "Option 3", cat: "Group 1" },
-        { key: "Option 4", cat: "Group 2" }
-      ],
+      // multiselect options
+      selectedStates: [],
+      selectedCauses: [],
+      selectedEthnics: [],
+      
+      // Filters
+      filters:{
+         state:[],
+         cause:[],
+         ethnic:[]
+      },
+      
+
     };
   }
   // Call methods while loading the application
   componentDidMount() {
-
+    this.loadFilters();
   }
 
   // pagination method to handle page changes
@@ -75,14 +95,14 @@ class NonProfitRecords extends Component {
       }
     );
   }
-
+  // method to save the search query name in state
   onChangeSearchName(e) {
     const name = e.target.value;
     this.setState({
       searchName: name,
     });
   }
-
+  // method for request parameters
   getReqParams_Name(name, page, pageSize) {
     let params = {};
     if (name) {
@@ -96,7 +116,8 @@ class NonProfitRecords extends Component {
     }
     return params;
   }
-
+ 
+  // method to retrieve the non profit records
   searchByName() {
     const { searchName, page, pageSize } = this.state;
     const params = this.getReqParams_Name(searchName, page, pageSize);
@@ -116,144 +137,168 @@ class NonProfitRecords extends Component {
       });
   }
 
-  // Display filters
-  handlerDisplayFilters() {
-    this.setState({ displayFilters: true });
+  // retrieve filter values
+  loadFilters(){
+    const { filters } = this.state;
+    const filter_obj = {};
+    for (const filter in filters){
+      const params = {"filter_name":filter}
+      RecordDataService.getFilters(params)
+      .then(response => {
+        filter_obj[filter] = response.data;
+      })
+      .catch(e => {
+        console.log(e);
+      });  
+    }
+    this.setState({
+      filters:filter_obj      
+    });
   }
+
+  // Toggle Display filters 
+  handlerDisplayFilters() {
+    const { displayFilters } = this.state;
+    this.setState({ displayFilters: !displayFilters });
+  }
+
+  // Get all selected states
+  onSelectStates(selectedList, selectedItem){
+    this.setState({
+      selectedStates: selectedList
+    });
+    console.log(this.state.filters)
+  }
+  // Remove selected states
+  onRemoveStates(selectedList, removedItem){
+    this.setState({
+      selectedStates: selectedList
+    });
+  }
+
+  // Get all selected Causes
+  onSelectCauses(selectedList, selectedItem){
+    this.setState({
+      selectedCauses: selectedList
+    });
+  }
+  // Remove selected causes
+  onRemoveCauses(selectedList, removedItem){
+    this.setState({
+      selectedCauses: selectedList
+    });
+  }
+
+  // Get all selected Ethnics
+  onSelectEthnics(selectedList, selectedItem){
+    this.setState({
+      selectedEthnics: selectedList
+    });
+  }
+  // Remove selected ethnics
+  onRemoveEthnics(selectedList, removedItem){
+    this.setState({
+      selectedEthnics: selectedList
+    });
+  }
+
+  // Apply filters
+  applyFilters(){
+    console.log("applied");
+  }
+
+  // Reset the selections in filter
+  resetFilters(){
+    this.multiselectRef.current.resetSelectedValues();
+    this.setState({
+      selectedStates: [],
+      selectedCauses: [],
+      selectedEthnics: []
+    });
+  }
+
   // render the HTML block
   render() {
     const { searchName, currentRecord, page, count, displayFilters, objectArray } = this.state;
+    const { state, cause, ethnic } = this.state.filters;
 
     return (
       <div className="list row main-section">
-        <button className="btn btn-outline-secondary filter-btn"
-          type="submit" onClick={this.handlerDisplayFilters}>
-            Filter
-          </button>
-        {/* <div className="column container">
-          <div className="row">
-            <div className="form-group">
-              <label>Non-Profit Name</label>
-              <input type="text" name="npname" id="npname"
-                className="form-control" placeholder="Enter name"
-                value={searchName} onChange={this.onChangeSearchName} />
-            </div>
-          </div>
-        </div>
-        <p></p>
-        <div className="text-right">
-          <div className="input-group-append">
-            <button className="btn btn-outline-secondary"
-              type="submit" onClick={this.searchByName}>
-              Search
-            </button>
-          </div>
-        </div> */}
-
           <label>Non-Profit Name</label>
 
           <InputGroup>
             <FormControl
-              placeholder="Non-Profit Name"
+              placeholder="Enter Non-Profit Name"
               aria-label="Non-Profit Name"
               value={searchName} onChange={this.onChangeSearchName}
             />
             <Button variant="outline-secondary" className="btn btn-outline-secondary"
               type="submit" onClick={this.searchByName}>Search</Button>
-          </InputGroup>
-
-        {/* {displayFilters === true &&
-          <div>
-            <div className="row d-content">
-              <div className="form-group width-auto">
-                <label>State</label>
-                <input type="text" name="npname" id="npname"
-                  className="form-control" placeholder="Enter state" />
-              </div>
               
-              <div className="form-group width-auto">
-                <label>Cause</label>
-                <input type="text" name="npname" id="npname"
-                  className="form-control" placeholder="Enter cause" />
-              </div>
-              <div className="form-group width-auto">
-                <label>Ethnic</label>
-                <input type="text" name="npname" id="npname"
-                  className="form-control" placeholder="Enter ethnic" />
-              </div>
-            </div>
-            <div className="text-right">
-              <a> Apply </a> &nbsp;
-                <a> Reset </a>
-            </div>
-          </div>
-        } */}
-         {displayFilters === true &&
-          // <div>
-          //   <div className="row d-content">
-          //     <label>State</label>
-          //     <Multiselect
-          //         options={objectArray}
-          //         displayValue="key"
-          //         showCheckbox={true}
-          //     />              
-          //     <div className="form-group width-auto">
-          //       <label>Cause</label>
-          //       <input type="text" name="npname" id="npname"
-          //         className="form-control" placeholder="Enter cause" />
-          //     </div>
-          //     <div className="form-group width-auto">
-          //       <label>Ethnic</label>
-          //       <input type="text" name="npname" id="npname"
-          //         className="form-control" placeholder="Enter ethnic" />
-          //     </div>
-          //   </div>
-          //   <div className="text-right">
-          //     <a> Apply </a> &nbsp;
-          //       <a> Reset </a>
-          //   </div>
-          // </div>
-
-          <Container>
+            <Button variant="outline-secondary" className="btn btn-outline-secondary"
+              type="" onClick={this.handlerDisplayFilters}>Filters</Button>
+          </InputGroup>
+          
+          <Container className={displayFilters ? null : "d-none"}>
             <Row className="pad-t-1"> 
               <Col className="pad-l-0">
                 <div className="row d-content">
-                  <label>State</label>
+                  <label>States</label>
                   <Multiselect
-                      options={objectArray}
-                      displayValue="key"
+                      options={state}
+                      // selectedValues={}
+                      displayValue="state"
                       showCheckbox={true}
+                      closeOnSelect={false}
+                      avoidHighlightFirstOption={true}
+                      onSelect={this.onSelectStates}
+                      onRemove={this.onRemoveStates}
+                      ref={this.multiselectRef}
                   />
                 </div>
               </Col>
               <Col className="pad-l-0">
                 <div className="row d-content">
-                  <label>Cause</label>
-                  <Multiselect
-                      options={objectArray}
-                      displayValue="key"
+                  <label>Causes</label>
+                  <Multiselect 
+                      options={cause}
+                      displayValue="cause"
                       showCheckbox={true}
+                      closeOnSelect={false}
+                      avoidHighlightFirstOption={true}
+                      onSelect={this.onSelectCauses}
+                      onRemove={this.onRemoveCauses}
+                      ref={this.multiselectRef}
                   />
                 </div>
               </Col>
               <Col className="pad-l-0">
                 <div className="row d-content">
-                  <label>Ethnic</label>
+                  <label>Ethnics</label>
                   <Multiselect
-                      options={objectArray}
-                      displayValue="key"
+                      options={ethnic}
+                      displayValue="ethnic"
                       showCheckbox={true}
+                      closeOnSelect={false}
+                      avoidHighlightFirstOption={true}
+                      onSelect={this.onSelectEthnics}
+                      onRemove={this.onRemoveEthnics}
+                      ref={this.multiselectRef}
                   />
                 </div>
               </Col>
             </Row>
-
+            <p></p>
             <div className="right"> 
-              <a> Apply </a> &nbsp;
-              <a> Reset </a>
+              <Button variant="outline-secondary" className="btn btn-outline-secondary"
+                onClick={this.applyFilters}>Apply</Button>
+              <Button variant="outline-secondary" className="btn btn-outline-secondary"
+                onClick={this.resetFilters}>Reset</Button>
+              {/* <a> Apply </a> &nbsp;
+              <a> Reset </a> */}
             </div>
           </Container>
-        }
+
         {currentRecord !== '' &&
           <div className="col-md-12">
             <h4>Non-Profits List</h4>

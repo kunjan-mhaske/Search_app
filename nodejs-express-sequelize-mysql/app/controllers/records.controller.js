@@ -1,3 +1,4 @@
+const { sequelize } = require("../models");
 const db = require("../models");
 const SchoolRecords = db.school_records;
 const NpRecords = db.np_records;
@@ -136,6 +137,7 @@ exports.findOne = (req, res) => {
       });
 };
 
+// For non profit search
 exports.findAllNonProfits = (req, res) => {
   const { page, size, np_name } = req.query;
   var condition = np_name ? { 
@@ -159,3 +161,24 @@ exports.findAllNonProfits = (req, res) => {
       });
     });
 };
+
+// For filters in non-profit search
+exports.getFilters = (req, res) => {
+  const { filter_name } = req.query;
+  const attribute = [[sequelize.fn('DISTINCT', sequelize.col(filter_name)), filter_name]];
+  const ordering = [[filter_name, 'ASC']];
+
+  NpRecords.findAll({ attributes:attribute, where:{}, order:ordering})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving records."     
+      });
+    });
+};
+
+
+

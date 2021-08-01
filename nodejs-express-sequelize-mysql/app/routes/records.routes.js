@@ -26,11 +26,11 @@ module.exports = app => {
     // delete a record with id
     // router.delete("/:school_id", records.delete);
 
-    // delete all records
-    // router.delete("/", records.deleteAll);
-
     // retrieve all non profit records with name
     router.get("/non-profits", records.findAllNonProfits);
+
+    // retrive all filters lists
+    router.get("/non-profits/filters", records.getFilters);
 
     app.use("/api/records", router);
 

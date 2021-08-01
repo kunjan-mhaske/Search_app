@@ -83,8 +83,9 @@
 
 .btn-outline-secondary {
   color: #fff !important;
-  background-color: #0096fb !important;
-  border-color: #0096fb !important;
+  background-color: #296D80 !important;
+  border-color: #296D80 !important;
+  margin-left: 0.15rem !important;
 }
 
 .table td {
@@ -110,7 +111,7 @@
   display: contents !important;
 }
 a {
-  color: #0096fb  !important;
+  color: #296D80  !important;
   cursor: pointer;
 }
 .pad-l-0 {
@@ -122,4 +123,12 @@ a {
 }
 .right {
   float: right;
+}
+
+.optionContainer>li:hover {
+  background: #296D80 !important;
+}
+
+div span.chip {
+  background: #296D80 !important;
 }
