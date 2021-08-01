@@ -37,7 +37,7 @@ class NonProfitRecords extends Component {
     // State to save and retrieve properties
     this.state = {
       records: [],
-      currentRecord: "",
+      currentRecord: [],
       searchName: "",
       searchCity: "",
       searchState: "",
@@ -129,6 +129,7 @@ class NonProfitRecords extends Component {
         this.setState({
           total_records: totalItems,
           currentRecord: records,
+          records: records,
           count: totalPages
         });
       })
@@ -167,7 +168,6 @@ class NonProfitRecords extends Component {
     this.setState({
       selectedStates: selectedList
     });
-    console.log(this.state.filters)
   }
   // Remove selected states
   onRemoveStates(selectedList, removedItem){
@@ -204,11 +204,41 @@ class NonProfitRecords extends Component {
 
   // Apply filters
   applyFilters(){
-    console.log("applied");
+    var { currentRecord } = this.state;
+    var stateRecord = [];
+    var causeRecord = [];
+    var ethnicRecord = [];
+    const { selectedStates, selectedCauses, selectedEthnics } = this.state;
+
+    // Apply filters in sequential manner. Careful while chnaging the sequence of filters
+    if(selectedStates.length !== 0){
+      stateRecord = currentRecord.filter(c => selectedStates.find(s => c.state === s.state));
+    }else{
+      stateRecord = currentRecord;
+    }
+    if(selectedCauses.length !== 0){
+      causeRecord = stateRecord.filter(c => selectedCauses.find(s => c.cause === s.cause));
+    }else{
+      causeRecord = stateRecord;
+    }
+    if(selectedEthnics.length !== 0){
+      ethnicRecord = causeRecord.filter(c => selectedEthnics.find(s => c.ethnic === s.ethnic));
+    }else{
+      ethnicRecord = causeRecord;
+    }
+    // Update the records from last filter 
+    this.setState({
+      total_records: ethnicRecord.length,
+      records: ethnicRecord,
+    });
+
   }
 
   // Reset the selections in filter
   resetFilters(){
+
+    console.log(this.state);
+
     this.multiselectRef.current.resetSelectedValues();
     this.setState({
       selectedStates: [],
@@ -219,7 +249,7 @@ class NonProfitRecords extends Component {
 
   // render the HTML block
   render() {
-    const { searchName, currentRecord, page, count, displayFilters, objectArray } = this.state;
+    const { searchName, currentRecord, page, count, displayFilters, records } = this.state;
     const { state, cause, ethnic } = this.state.filters;
 
     return (
@@ -299,7 +329,7 @@ class NonProfitRecords extends Component {
             </div>
           </Container>
 
-        {currentRecord !== '' &&
+        {records.length !== 0 &&
           <div className="col-md-12">
             <h4>Non-Profits List</h4>
             {this.state.total_records !== 1 && <p>Total {this.state.total_records} records found.</p>}
@@ -318,7 +348,7 @@ class NonProfitRecords extends Component {
                 </tr>
               </thead>
               <tbody >
-                {currentRecord.map((item, i) =>
+                {records.map((item, i) =>
                   <tr>
                     {/* <td>{i+1}</td> */}
                     <td><a href={item.url_ctp} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
