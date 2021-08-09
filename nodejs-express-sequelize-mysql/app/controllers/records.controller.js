@@ -75,11 +75,16 @@ exports.findAllSchools = (req, res) => {
   const {page, size, school_city, school_state} = req.query;
   const {limit, offset} = getPagination(page, size);
 
-  var condition = school_city ? { 
-    State: { [Op.like]: `%${school_state}%` },
-    City: { [Op.like]: `%${school_city}%` } 
-  } : null;
-
+  if (school_state == " "){
+    var condition = school_city ? { 
+      City: { [Op.like]: `%${school_city}%` } 
+    } : null;      
+  }else{
+    var condition = school_city ? { 
+      State: { [Op.like]: `%${school_state}%` },
+      City: { [Op.like]: `%${school_city}%` } 
+    } : null;
+  }
   // Get results in ascending order of school name
   const ordering = [['School_Name', 'ASC']];
 

@@ -38,7 +38,7 @@ class RecordsList extends Component {
       currentIndex: -1,
       searchName: "",
       searchCity: "",
-      searchState: "",
+      searchState: " ",
       searchZip: '',
 
       page: 1,
@@ -111,7 +111,7 @@ class RecordsList extends Component {
       // reset other fields
       searchName: "",
       searchCity: "",
-      searchState: "",
+      searchState: " ",
 
     });
   }
