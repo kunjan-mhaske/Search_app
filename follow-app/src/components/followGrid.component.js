@@ -3,11 +3,12 @@ import { Component, React } from 'react';
 // CSS styles
 // import { styles } from "../css-common"
 import { withStyles } from '@material-ui/core/styles';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 import { Container, Row, Col, Image, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
 
 import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
-
 
 class FollowGrid extends Component{
   constructor(props) {
@@ -32,18 +33,18 @@ class FollowGrid extends Component{
         total_followers:0,
 
         followingUsers: [
-          { "name": "1Amazon", "image": "https://logo.uplead.com/amazon.com" },
+          { "name": "1AmazonOwnerJefferyBezosWenttoSpace", "image": "https://logo.uplead.com/amazon.com" },
           { "name": "2Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
           { "name": "3Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "4Sony", "image": "https://logo.uplead.com/sony.com" },
+          { "name": "Vishwanathan Vishwanathankunjn", "image": "https://logo.uplead.com/sony.com" },
           { "name": "5IBM", "image": "https://logo.uplead.com/ibm.com" },
           { "name": "6Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
           { "name": "7Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "8Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+          { "name": "Kunjan Mhaske", "image": "https://logo.uplead.com/microsoft.com" },
           { "name": "9Fox", "image": "https://logo.uplead.com/fox.com" },
           { "name": "10Sony", "image": "https://logo.uplead.com/sony.com" },
           { "name": "11IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "12Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "Robert Tolmach", "image": "https://logo.uplead.com/toshiba.com" },
           { "name": "13Amazon", "image": "https://logo.uplead.com/amazon.com" },
           { "name": "14Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
           { "name": "15Fox", "image": "https://logo.uplead.com/fox.com" },
@@ -94,6 +95,27 @@ class FollowGrid extends Component{
           { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
           { "name": "018Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
           { "name": "019Fox", "image": "https://logo.uplead.com/fox.com" },
+          { "name": "01Fox", "image": "https://logo.uplead.com/fox.com" },
+          { "name": "02Sony", "image": "https://logo.uplead.com/sony.com" },
+          { "name": "03IBM", "image": "https://logo.uplead.com/ibm.com" },
+          { "name": "04Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "05Amazon", "image": "https://logo.uplead.com/amazon.com" },
+          { "name": "06Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+          { "name": "07Fox", "image": "https://logo.uplead.com/fox.com" },
+          { "name": "08Sony", "image": "https://logo.uplead.com/sony.com" },
+          { "name": "09IBM", "image": "https://logo.uplead.com/ibm.com" },
+          { "name": "010Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "011Amazon", "image": "https://logo.uplead.com/amazon.com" },
+          { "name": "012Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+          { "name": "013Fox", "image": "https://logo.uplead.com/fox.com" },
+          { "name": "014Sony", "image": "https://logo.uplead.com/sony.com" },
+          { "name": "015IBM", "image": "https://logo.uplead.com/ibm.com" },
+          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
         ],
       };
   }
@@ -199,36 +221,7 @@ class FollowGrid extends Component{
         <div>
         <Accordion style={{boxShadow:"none"}}>
           <AccordionSummary>
-            <Button variant="outline-none" style={{boxShadow:"none", padding:0}} onClick={this.toggleFollowingLabel} >{toggleLabel1} {total_following} following</Button>
-          </AccordionSummary>
-          {/* <div>
-              <Row>
-                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
-              </Row>
-            </div> */}
-
-          <AccordionDetails>
-            <Container className="scrollbar">
-              {following_user_grid.map(ro => 
-                <Row> 
-                  {ro.map(co => 
-                    <Col> 
-                      <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
-                        <a href={co.image}> 
-                          <Image className="thumbnail_img" src={co.image} thumbnail/> 
-                        </a>
-                      </OverlayTrigger>
-                    </Col>)}
-                </Row>)}
-              </Container>
-          </AccordionDetails>
-        </Accordion>
-        </div>
-
-        <div>
-        <Accordion style={{boxShadow:"none"}}>
-          <AccordionSummary>
-            <Button variant="outline-none" style={{boxShadow:"none",  padding:0}} onClick={this.toggleFollowerLabel}>{toggleLabel2} {total_followers} followers</Button>
+              <Button variant="outline-none" style={{boxShadow:"none",  padding:0}} onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2==="See"?total_followers:null} followers</Button>
           </AccordionSummary>
           {/* <div>
               <Row>
@@ -237,7 +230,10 @@ class FollowGrid extends Component{
             </div> */}
 
           <AccordionDetails>
+
             <Container className="scrollbar">
+            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px" 
+                        renderTrackHorizontal={({ style, ...props }) =><div {...props} style={{...style }}/>}>
               {follower_user_grid.map(ro => 
                 <Row> 
                   {ro.map(co => 
@@ -249,6 +245,39 @@ class FollowGrid extends Component{
                       </OverlayTrigger>
                     </Col>)}
                 </Row>)}
+              </Scrollbars>
+              </Container>
+          </AccordionDetails>
+        </Accordion>
+        </div>
+
+        <div>
+        <Accordion style={{boxShadow:"none"}}>
+          <AccordionSummary>
+            <Button variant="outline-none" style={{boxShadow:"none", padding:0}} onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1==="See"?total_following:null} following</Button>
+          </AccordionSummary>
+          {/* <div>
+              <Row>
+                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
+              </Row>
+            </div> */}
+
+          <AccordionDetails>
+            <Container className="scrollbar">
+            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px" 
+                        renderTrackHorizontal={({ style, ...props }) =><div {...props} style={{ ...style }}/>}>
+              {following_user_grid.map(ro => 
+                <Row> 
+                  {ro.map(co => 
+                    <Col> 
+                      <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
+                        <a href={co.image}> 
+                          <Image className="thumbnail_img" src={co.image} thumbnail/> 
+                        </a>
+                      </OverlayTrigger>
+                    </Col>)}
+                </Row>)}
+            </Scrollbars>
               </Container>
           </AccordionDetails>
         </Accordion>

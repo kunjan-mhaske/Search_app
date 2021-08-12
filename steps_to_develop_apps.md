@@ -101,13 +101,14 @@ Run client in frontend folder: npm start
 
 
 
-button color: #296D80
+CtP color: #296D80
 
 Project 2: http://changingthepresent.pythonanywhere.com/  COLLEGE SEARCH exactly like this
 
 Follow this page to create simple dynamic search bar:
 https://www.emgoto.com/react-search-bar/
 
+--------------------------------------------------------------------------------
 
 Project 3:
 
@@ -118,9 +119,10 @@ Create APIs for the customized filters in nodejs-express-sequelize-mysql backend
 Duplicate project 1 and start implementing the services and modify the components.
 
 
+-----------------------------------------------------------------------------
 
+Project 4: Follower - Following
 
+Get User photos and names:
+https://changingthepresent.org/collections/george-washington-high-school-10002
 
-/// For Now:
-/// /// /// Generate a Different Table with all the attributes in one.
-/// /// /// Generate multiple separate tables for the filters.
