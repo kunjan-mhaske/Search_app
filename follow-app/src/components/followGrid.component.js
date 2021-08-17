@@ -10,133 +10,150 @@ import { Container, Row, Col, Image, OverlayTrigger, Button, Tooltip } from 'rea
 
 import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 
-class FollowGrid extends Component{
+class FollowGrid extends Component {
   constructor(props) {
     super(props);
-      this.generateGridSeparate = this.generateGridSeparate.bind(this);
-      this.generateGridComplete = this.generateGridComplete.bind(this);
-      this.toggleFollowerLabel = this.toggleFollowerLabel.bind(this);
-      this.toggleFollowingLabel = this.toggleFollowingLabel.bind(this);
+    this.generateGridSeparate = this.generateGridSeparate.bind(this);
+    this.generateGridComplete = this.generateGridComplete.bind(this);
+    this.toggleFollowerLabel = this.toggleFollowerLabel.bind(this);
+    this.toggleFollowingLabel = this.toggleFollowingLabel.bind(this);
 
-      this.state = {
-        toggleLabel1: "See",
-        toggleLabel2: "See",
+    this.state = {
+      toggleLabel1: "See",
+      toggleLabel2: "See",
 
-        top_following_num: 4,
-        following_top_users: [],
-        following_user_grid: [],
-        total_following:0,
+      top_following_num: 4,
+      following_top_users: [],
+      following_user_grid: [],
+      total_following: 0,
 
-        top_follower_num: 4,
-        follower_top_users: [],
-        follower_user_grid: [],
-        total_followers:0,
+      top_follower_num: 4,
+      follower_top_users: [],
+      follower_user_grid: [],
+      total_followers: 0,
 
-        followingUsers: [
-          { "name": "1AmazonOwnerJefferyBezosWenttoSpace", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "2Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "3Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "Vishwanathan Vishwanathankunjn", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "5IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "6Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "7Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "Kunjan Mhaske", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "9Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "10Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "11IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "Robert Tolmach", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "13Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "14Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "15Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "16Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "17IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "18Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "19Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "20Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "1Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "2Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "3Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "4Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "5IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "6Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "7Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "8Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "9Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "10Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "11IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "12Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "13Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "14Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "15Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "16Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "17IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "18Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "19Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "20Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+      followingUsers: [
+        { "name": "1AmazonOwnerJefferyBezosWenttoSpace", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "2Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "3Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "Vishwanathan Vishwanathankunjn", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "5IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "6Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "7Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "Kunjan Mhaske", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "9Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "10Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "11IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "Robert Tolmach", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "13Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "14Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "15Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "16Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "17IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "18Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "19Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "20Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "1Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "2Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "3Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "4Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "5IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "6Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "7Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "8Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "9Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "10Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "11IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "12Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "13Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "14Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "15Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "16Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "17IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "18Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "19Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "20Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
 
-        ],
-        followerUsers: [
-          { "name": "01Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "02Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "03IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "04Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "05Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "06Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "07Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "08Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "09IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "010Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "011Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "012Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "013Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "014Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "015IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "018Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "019Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "01Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "02Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "03IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "04Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "05Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "06Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "07Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "08Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "09IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "010Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "011Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "012Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
-          { "name": "013Fox", "image": "https://logo.uplead.com/fox.com" },
-          { "name": "014Sony", "image": "https://logo.uplead.com/sony.com" },
-          { "name": "015IBM", "image": "https://logo.uplead.com/ibm.com" },
-          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
-          { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
-          { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
-        ],
-      };
+      ],
+      followerUsers: [
+        { "name": "01Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "02Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "03IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "04Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "05Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "06Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "07Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "08Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "09IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "010Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "011Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "012Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "013Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "014Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "015IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "018Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "019Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "01Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "02Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "03IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "04Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "05Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "06Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "07Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "08Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "09IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "010Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "011Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "012Microsoft", "image": "https://logo.uplead.com/microsoft.com" },
+        { "name": "013Fox", "image": "https://logo.uplead.com/fox.com" },
+        { "name": "014Sony", "image": "https://logo.uplead.com/sony.com" },
+        { "name": "015IBM", "image": "https://logo.uplead.com/ibm.com" },
+        { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "016Toshiba", "image": "https://logo.uplead.com/toshiba.com" },
+        { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+        { "name": "017Amazon", "image": "https://logo.uplead.com/amazon.com" },
+      ],
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     // this.generateGridSeparate();
     this.generateGridComplete();
+
+    // Script for customized collapsible container
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    var coll = document.getElementsByClassName("collapsible-b");
+    for (var i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        } 
+      });
+    }
+
   }
 
-  generateGridComplete(){
+  generateGridComplete() {
     const { followingUsers, followerUsers } = this.state;
     const { top_following_num, top_follower_num } = this.state;
     const following_grid = [];
-    const follower_grid = []; 
+    const follower_grid = [];
     const t_follower = followerUsers.length;
     const t_following = followingUsers.length;
 
     // Following
-    while(followingUsers.length) following_grid.push(followingUsers.splice(0,top_following_num));
+    while (followingUsers.length) following_grid.push(followingUsers.splice(0, top_following_num));
     // Follower
-    while(followerUsers.length) follower_grid.push(followerUsers.splice(0,top_follower_num));
+    while (followerUsers.length) follower_grid.push(followerUsers.splice(0, top_follower_num));
 
     this.setState({
       following_user_grid: following_grid,
@@ -147,7 +164,7 @@ class FollowGrid extends Component{
 
   }
 
-  generateGridSeparate(){
+  generateGridSeparate() {
     const { followingUsers, followerUsers } = this.state;
     const { top_following_num, top_follower_num } = this.state;
     const following_grid = [];
@@ -158,18 +175,18 @@ class FollowGrid extends Component{
     const t_following = followingUsers.length;
 
     // Following
-    for (let i =0; i<top_following_num; i++){
+    for (let i = 0; i < top_following_num; i++) {
       following_top.push(followingUsers[i])
     }
     const remaining = followingUsers.splice(top_following_num, followingUsers.length);
-    while(remaining.length) following_grid.push(remaining.splice(0,top_following_num));
-    
+    while (remaining.length) following_grid.push(remaining.splice(0, top_following_num));
+
     // Follower
-    for (let i =0; i<top_follower_num; i++){
+    for (let i = 0; i < top_follower_num; i++) {
       follower_top.push(followerUsers[i])
     }
     const remaining_ = followerUsers.splice(top_follower_num, followerUsers.length);
-    while(remaining_.length) follower_grid.push(remaining_.splice(0,top_follower_num));
+    while (remaining_.length) follower_grid.push(remaining_.splice(0, top_follower_num));
 
     this.setState({
       following_top_users: following_top,
@@ -181,32 +198,28 @@ class FollowGrid extends Component{
 
     });
 
-    // console.log(following_top);
-    // console.log(following_grid);
-    // console.log(follower_top);
-    // console.log(follower_grid);
   }
 
-  toggleFollowingLabel(){
+  toggleFollowingLabel() {
     const { toggleLabel1 } = this.state;
-    if (toggleLabel1 === "See"){
+    if (toggleLabel1 === "See") {
       this.setState({
         toggleLabel1: "Close"
       });
-    }else{
+    } else {
       this.setState({
         toggleLabel1: "See"
       });
     }
   }
 
-  toggleFollowerLabel(){
+  toggleFollowerLabel() {
     const { toggleLabel2 } = this.state;
-    if (toggleLabel2 === "See"){
+    if (toggleLabel2 === "See") {
       this.setState({
         toggleLabel2: "Close"
       });
-    }else{
+    } else {
       this.setState({
         toggleLabel2: "See"
       });
@@ -216,72 +229,146 @@ class FollowGrid extends Component{
   render() {
     const { following_top_users, following_user_grid, follower_top_users, follower_user_grid } = this.state;
     const { total_following, total_followers, toggleLabel1, toggleLabel2 } = this.state;
-    return(
+    return (
       <div>
-        <div>
-        <Accordion style={{boxShadow:"none"}}>
-          <AccordionSummary>
-              <Button variant="outline-none" style={{boxShadow:"none",  padding:0}} onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2==="See"?total_followers:null} followers</Button>
-          </AccordionSummary>
-          {/* <div>
+
+        {/* <div>
+          <Accordion style={{ boxShadow: "none" }}>
+            <AccordionSummary>
+              <div className="summary-section">
+                <Button variant="outline-none" style={{ boxShadow: "none", padding: 0 }} onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</Button>
+              </div>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Container className="scrollbar">
+                <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px"
+                  renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                  {follower_user_grid.map(ro =>
+                    <Row>
+                      {ro.map(co =>
+                        <Col>
+                          <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
+                            <a href={co.image}>
+                              <Image className="thumbnail_img" src={co.image} thumbnail />
+                            </a>
+                          </OverlayTrigger>
+                        </Col>)}
+                    </Row>)}
+                </Scrollbars>
+              </Container>
+            </AccordionDetails>
+          </Accordion>
+        </div> */}
+
+        {/* <div>
+          <Accordion style={{ boxShadow: "none" }}>
+            <AccordionSummary>
+              <Button variant="outline-none" style={{ boxShadow: "none", padding: 0 }} onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</Button>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Container className="scrollbar">
+                <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px"
+                  renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                  {following_user_grid.map(ro =>
+                    <Row>
+                      {ro.map(co =>
+                        <Col>
+                          <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
+                            <a href={co.image}>
+                              <Image className="thumbnail_img" src={co.image} thumbnail />
+                            </a>
+                          </OverlayTrigger>
+                        </Col>)}
+                    </Row>)}
+                </Scrollbars>
+              </Container>
+            </AccordionDetails>
+          </Accordion>
+        </div> */}
+
+{/* Display none and block as previously done in search app
+<ROW><Col><Row> as written below.
+ */}
+
+            {/* <div>
               <Row>
                 {follower_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
               </Row>
             </div> */}
 
-          <AccordionDetails>
-
-            <Container className="scrollbar">
-            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px" 
-                        renderTrackHorizontal={({ style, ...props }) =><div {...props} style={{...style }}/>}>
-              {follower_user_grid.map(ro => 
-                <Row> 
-                  {ro.map(co => 
-                    <Col> 
-                      <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
-                        <a href={co.image}> 
-                          <Image className="thumbnail_img" src={co.image} thumbnail/> 
-                        </a>
-                      </OverlayTrigger>
-                    </Col>)}
-                </Row>)}
-              </Scrollbars>
-              </Container>
-          </AccordionDetails>
-        </Accordion>
-        </div>
-
-        <div>
-        <Accordion style={{boxShadow:"none"}}>
-          <AccordionSummary>
-            <Button variant="outline-none" style={{boxShadow:"none", padding:0}} onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1==="See"?total_following:null} following</Button>
-          </AccordionSummary>
-          {/* <div>
+            {/* <div>
               <Row>
                 {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
               </Row>
             </div> */}
 
-          <AccordionDetails>
-            <Container className="scrollbar">
-            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px" 
-                        renderTrackHorizontal={({ style, ...props }) =><div {...props} style={{ ...style }}/>}>
-              {following_user_grid.map(ro => 
-                <Row> 
-                  {ro.map(co => 
-                    <Col> 
-                      <OverlayTrigger placement="auto" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
-                        <a href={co.image}> 
-                          <Image className="thumbnail_img" src={co.image} thumbnail/> 
+        {/* <div className="inline-flex">
+          <a href="#">
+            <Image className="thumbnail_img" src="https://logo.uplead.com/microsoft.com" thumbnail />
+          </a>
+          <a href="#">
+            <Image className="thumbnail_img" src="https://logo.uplead.com/microsoft.com" thumbnail />
+          </a>
+          <a href="#">
+            <Image className="thumbnail_img" src="https://logo.uplead.com/microsoft.com" thumbnail />
+          </a>
+          <a href="#">
+            <Image className="thumbnail_img" src="https://logo.uplead.com/microsoft.com" thumbnail />
+          </a>
+        </div> */}
+
+
+        <div>
+          <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button>
+          {/* {toggleLabel2 === "See" && <div>
+            <Row>
+              {follower_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
+            </Row>
+          </div>} */}
+          <div className="collapsible-content">
+            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px"
+              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+              {follower_user_grid.map(ro =>
+                <Row>
+                  {ro.map(co =>
+                    <Col>
+                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
+                        <a href={co.image}>
+                          <Image className="thumbnail_img" src={co.image} thumbnail />
                         </a>
                       </OverlayTrigger>
                     </Col>)}
                 </Row>)}
             </Scrollbars>
-              </Container>
-          </AccordionDetails>
-        </Accordion>
+          </div>
         </div>
+
+        <div>
+          <button className="collapsible-b" onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button>
+            {/* <div>
+              <Row>
+                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
+              </Row>
+            </div> */}
+
+          <div className="collapsible-content">
+            <Scrollbars autoHeight autoHeightMin="0px" autoHeightMax="400px"
+              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+              {following_user_grid.map(ro =>
+                <Row>
+                  {ro.map(co =>
+                    <Col>
+                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
+                        <a href={co.image}>
+                          <Image className="thumbnail_img" src={co.image} thumbnail />
+                        </a>
+                      </OverlayTrigger>
+                    </Col>)}
+                </Row>)}
+            </Scrollbars>
+          </div>
+        </div>
+
 
       </div>
     );

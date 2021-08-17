@@ -60,17 +60,28 @@
   /* --bs-gutter-y: 0 !important; */
 }
 
+#overlay-id{
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+
+#name-tooltip  {
+  inset: 0px auto auto 0px !important;
+}
+
 #name-tooltip > .tooltip-inner {
   background-color: #fff;
   color: #000;
   border-radius: 0px !important;
   border: 1px solid #296D80;
   word-break: "break-all";
-  max-width: 150px !important;
+  max-width: 125px !important;
 }
 
 #name-tooltip > .tooltip-arrow {
-  color: #296D80;
+  /* color: #296D80; */
+  display: none;
   /* border-top: 5px solid #296D80; */
 }
 
@@ -97,3 +108,40 @@
     /* padding: 0px !important; */
     COLOR: #296D80 !important;
 }
+
+/* .inline-flex {
+  display: inline-flex !important; 
+} */
+
+/* .summary-section {
+  display: grid;
+  margin-top: 1rem;
+} */
+
+.collapsible-b {
+  justify-content: center;
+  box-shadow: none !important;
+  /* padding: 0px !important; */
+  COLOR: #296D80 !important;
+  background: none;
+  /* color: white; */
+  cursor: pointer;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  text-align: -webkit-center;
+  outline: none;
+  /* font-size: 15px; */
+}
+.active, .collapsible-b:hover {
+  /* background-color: #555; */
+}
+.collapsible-content {
+  padding: 0 15px;
+  /* set max height according to the iframe size*/
+  max-height: 45px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  /* background-color: #f1f1f1; */
+}
+
