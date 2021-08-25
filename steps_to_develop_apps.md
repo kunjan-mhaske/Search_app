@@ -30,7 +30,7 @@ Step 1:
     - db.config.js file with optional pool parameter 
 - Initialize Sequelize:
     - create app/models folder and index.js file in it
-    - add sync() in server.js for that db connection
+    - add sync() in server.js for that db connection (Do not use it. Follow comments in code.)
 - Define the Sequelize Model:
     - create records.models.js file in models folder
     - It contains table structure and names of columns
@@ -125,4 +125,22 @@ Project 4: Follower - Following
 
 Get User photos and names:
 https://changingthepresent.org/collections/george-washington-high-school-10002
+
+Done:
+https://cdn.shopify.com/s/files/1/1842/4701/products/alex_200x200.jpg?v=1574125865
+https://cdn.shopify.com/s/files/1/1842/4701/products/ali_200x200.jpg?v=1574125863
+https://cdn.shopify.com/s/files/1/1842/4701/products/726011439276018bd95820d60ac74475_square_e6896467-f018-440d-8dc2-bb812041a8d7_200x200.jpg?v=1574124402
+https://cdn.shopify.com/s/files/1/1842/4701/products/HSboy3a_200x200.jpg?v=1604425464
+https://cdn.shopify.com/s/files/1/1842/4701/products/CourtneySadlersquare_200x200.png?v=1603744572
+https://cdn.shopify.com/s/files/1/1842/4701/products/HSboy2_200x200.jpg?v=1604425329
+https://cdn.shopify.com/s/files/1/1842/4701/products/HSgirl_200x200.jpg?v=1604424844
+https://cdn.shopify.com/s/files/1/1842/4701/products/HSstudentpic_200x200.png?v=1604424633
+https://cdn.shopify.com/s/files/1/1842/4701/products/jordan_200x200.jpg?v=1574125870
+https://cdn.shopify.com/s/files/1/1842/4701/products/matt_200x200.jpg?v=1574125861
+https://cdn.shopify.com/s/files/1/1842/4701/products/mckayla_200x200.jpg?v=1574125867
+https://cdn.shopify.com/s/files/1/1842/4701/products/mollie_200x200.jpg?v=1574125876
+https://cdn.shopify.com/s/files/1/1842/4701/products/monica_200x200.jpg?v=1574125879
+https://cdn.shopify.com/s/files/1/1842/4701/products/Richard_Aved_200x200.jpg?v=1603685528
+https://cdn.shopify.com/s/files/1/1842/4701/products/78452403_1357430384416366_7086704722823872512_n_200x200.jpg?v=1619985012
+https://cdn.shopify.com/s/files/1/1842/4701/products/pic_square_1_200x200.jpg?v=1571609819
 

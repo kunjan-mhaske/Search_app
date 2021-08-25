@@ -29,7 +29,7 @@ class SearchBar extends Component {
       window.open(values.URL_CtP, '_blank', 'noopener,noreferrer');
     }
   }  
-  // Not used for now
+
   onSearchQuery(e) {
     const searchQuery = e.target.value;
     this.setState({

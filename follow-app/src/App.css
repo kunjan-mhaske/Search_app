@@ -74,7 +74,7 @@
   background-color: #fff;
   color: #000;
   border-radius: 0px !important;
-  border: 1px solid #296D80;
+  /* border: 1px solid #296D80; */
   word-break: "break-all";
   max-width: 125px !important;
 }
@@ -127,6 +127,7 @@
   /* color: white; */
   cursor: pointer;
   padding: 15px;
+  padding-bottom: inherit;
   width: 100%;
   border: none;
   text-align: -webkit-center;
@@ -137,7 +138,7 @@
   /* background-color: #555; */
 }
 .collapsible-content {
-  padding: 0 15px;
+  padding: 0 10px;
   /* set max height according to the iframe size*/
   max-height: 45px;
   overflow: hidden;
@@ -145,3 +146,55 @@
   /* background-color: #f1f1f1; */
 }
 
+/* -------------------------------------- */
+
+.grid-item > ul{
+  margin-bottom: 0 !important;
+}
+
+ul{
+  list-style: none outside;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  padding-left: 0 !important;
+}
+
+@media(min-width: 768px){
+  .logo-list{
+    margin: 10px 0 0;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.logo-list{
+  display: inline-block;
+  list-style: none outside;
+  vertical-align: top;
+  text-align: left;
+  /* set margin according to iframe size*/
+  margin-bottom: 0.41em !important;
+}
+
+.logo-list > li {
+  display: inline-block;
+  margin-right: 4px;
+  width: 22%;
+}
+
+li{
+  margin-bottom: 0 !important;
+  text-align: -webkit-match-parent;
+}
+
+a{
+  text-decoration: none !important;
+  background: 0 0;
+}
+
+a > img{
+  border: 0 none;
+}
