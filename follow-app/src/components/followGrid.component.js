@@ -1,18 +1,14 @@
 import { Component, React } from 'react';
 import RecordDataService from "../services/record.service.js";
 
-
 // CSS styles
 // import { styles } from "../css-common"
 import { withStyles } from '@material-ui/core/styles';
 import { Scrollbars } from 'react-custom-scrollbars';
 
-import { scrollToTop } from 'react-custom-scrollbars/lib/index';
- 
+import user_silhouette from '../user_silhouette.jpg';
 
 import { Container, Row, Col, Image, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
-
-import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
 
 class FollowGrid extends Component {
   constructor(props) {
@@ -40,7 +36,7 @@ class FollowGrid extends Component {
       total_followers: 0,
 
       followingUsers: [
-        // { "name": "01Fox", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/alex_200x200.jpg?v=1574125865" },
+        // { "name": "01Fox", "image": "" },
         // { "name": "02Sony", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/ali_200x200.jpg?v=1574125863" },
         // { "name": "03IBM", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/726011439276018bd95820d60ac74475_square_e6896467-f018-440d-8dc2-bb812041a8d7_200x200.jpg?v=1574124402" },
         // { "name": "04Toshiba", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/HSboy3a_200x200.jpg?v=1604425464" },
@@ -91,7 +87,7 @@ class FollowGrid extends Component {
         // { "name": "016Toshiba", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/pic_square_1_200x200.jpg?v=1571609819" },
       ],
       followerUsers: [
-        // { "name": "01Fox", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/alex_200x200.jpg?v=1574125865" },
+        // { "name": "01Fox", "image": null },
         // { "name": "02Sony", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/ali_200x200.jpg?v=1574125863" },
         // { "name": "03IBM", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/726011439276018bd95820d60ac74475_square_e6896467-f018-440d-8dc2-bb812041a8d7_200x200.jpg?v=1574124402" },
         // { "name": "04Toshiba", "image": "https://cdn.shopify.com/s/files/1/1842/4701/products/HSboy3a_200x200.jpg?v=1604425464" },
@@ -152,21 +148,21 @@ class FollowGrid extends Component {
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
     var coll = document.getElementsByClassName("collapsible-b");
     for (var i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
+      coll[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var content = this.nextElementSibling;
-        if (content.style.maxHeight){
+        if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
           content.style.maxHeight = content.scrollHeight + "px";
-        } 
+        }
       });
     }
 
   }
 
   // Prepare params to forward in request
-  getRequestParam(userEmail){
+  getRequestParam(userEmail) {
     let params = {};
     params["user_email"] = userEmail;
     return params;
@@ -180,25 +176,22 @@ class FollowGrid extends Component {
     const param = this.getRequestParam(user_email);
     let followers = [];
     let followings = [];
-    
-    await RecordDataService.findFollowers(param)
-    .then(response => {
-      followers = response.data;
-    })
-    .catch(e => { console.log(e); });
 
-    await RecordDataService.findFollowings(param)
-    .then(response => {
-      followings = response.data;
-    })
-    .catch(e => { console.log(e); });
+    // await RecordDataService.findFollowers(param)
+    // .then(response => {
+    //   followers = response.data;
+    // })
+    // .catch(e => { console.log(e); });
 
-    // console.log(this.state);
-    
+    // await RecordDataService.findFollowings(param)
+    // .then(response => {
+    //   followings = response.data;
+    // })
+    // .catch(e => { console.log(e); });
 
-    // const { followingUsers, followerUsers } = this.state;
-    const followingUsers = followings;
-    const followerUsers = followers;
+    const { followingUsers, followerUsers } = this.state;
+    // const followingUsers = followings;
+    // const followerUsers = followers;
 
     const { top_following_num, top_follower_num } = this.state;
     const following_grid = [];
@@ -207,17 +200,17 @@ class FollowGrid extends Component {
     const t_following = followingUsers.length;
 
     // Follower
-    if (t_follower >= top_follower_num){
+    if (t_follower >= top_follower_num) {
       while (followerUsers.length) follower_grid.push(followerUsers.splice(0, top_follower_num));
     }
-    else{
+    else {
       follower_grid.push(followingUsers);
     }
     // Following
-    if (t_following >= top_following_num){
+    if (t_following >= top_following_num) {
       while (followingUsers.length) following_grid.push(followingUsers.splice(0, top_following_num));
     }
-    else{
+    else {
       following_grid.push(followingUsers);
     }
 
@@ -228,34 +221,34 @@ class FollowGrid extends Component {
       total_following: t_following,
     });
 
-    console.log(this.state);
+    // console.log(this.state);
 
   }
 
   // Generate followers followings in a single query
-  async generateGrid(){
+  async generateGrid() {
     const { user_email } = this.state;
     const param = this.getRequestParam(user_email);
     let followers = [];
     let followings = [];
 
     let data = await RecordDataService.findAllFollowersFollowings(param)
-    .then(response => {
-      return response.data;
-    })
-    .catch(e => { console.log(e); });
+      .then(response => {
+        return response.data;
+      })
+      .catch(e => { console.log(e); });
 
-    for (let row in data){
+    for (let row in data) {
       // get all followings that follows the user
-      if (data[row].follower_email === user_email){
+      if (data[row].follower_email === user_email) {
         followings.push(data[row]);
       }
       // get all followers followed by user
-      if (data[row].followed_email === user_email){
+      if (data[row].followed_email === user_email) {
         followers.push(data[row]);
       }
     }
-    
+
     const followingUsers = followings;
     const followerUsers = followers;
 
@@ -266,17 +259,17 @@ class FollowGrid extends Component {
     const t_following = followingUsers.length;
 
     // Follower
-    if (t_follower >= top_follower_num){
+    if (t_follower >= top_follower_num) {
       while (followerUsers.length) follower_grid.push(followerUsers.splice(0, top_follower_num));
     }
-    else{
+    else {
       follower_grid.push(followingUsers);
     }
     // Following
-    if (t_following >= top_following_num){
+    if (t_following >= top_following_num) {
       while (followingUsers.length) following_grid.push(followingUsers.splice(0, top_following_num));
     }
-    else{
+    else {
       following_grid.push(followingUsers);
     }
 
@@ -358,13 +351,13 @@ class FollowGrid extends Component {
     const { total_following, total_followers, toggleLabel1, toggleLabel2 } = this.state;
     return (
       <div>
-            {/* <div>
+        {/* <div>
               <Row>
                 {follower_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
               </Row>
             </div> */}
 
-            {/* <div>
+        {/* <div>
               <Row>
                 {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
               </Row>
@@ -410,68 +403,108 @@ class FollowGrid extends Component {
           </div>
         </div> */}
 
-{/* Logos generated as list elements */}
+        {/* Logos generated as list elements */}
         <div>
-          {total_followers > 4 && <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button>}
-          {1 <= total_followers && total_followers <= 4 && <button className="collapsible-b">Followers</button>}
+          {/* Show only when total followers are 0 */}
           {total_followers === 0 && <button className="collapsible-b">No Followers</button>}
-          {/* <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button> */}
-            {/* <div>
-              <Row>
-                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
-              </Row>
-            </div> */}
-          
-          <div className="collapsible-content">
-            <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
-              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
-              {follower_user_grid.map(ro =>
+          {/* Show only when total followers are 1 to 4 */}
+          <div className={1 <= total_followers && total_followers <= 4 ? null: "d-none"}>
+            <button className="collapsible-b">Followers</button>
+            <div className="collapsible-content">
+              <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
+                renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                {follower_user_grid.map(ro =>
                   <ul className="logo-list"> {ro.map(co =>
                     <li>
-                      {/* <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}> */}
                       <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.follower_name}</Tooltip>}>
-                        <a href={co.image} target="_blank" rel="noopener noreferrer">
-                          {/* <Image className="thumbnail_img" src={co.image} thumbnail /> */}
-                          <Image className="thumbnail_img" src={co.follower_image_url} thumbnail />
+                        <a href={co.follower_handle} target="_blank" rel="noopener noreferrer">
+                          {/* {(co.image === "" || co.image === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />} */}
+                          {(co.follower_image_url === "" || co.follower_image_url === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />}
+                          {/* {(co.image !== "" && co.image !== null) && <Image className="thumbnail_img" src={co.image} thumbnail />} */}
+                          {(co.follower_image_url !== "" && co.follower_image_url !== null) && <Image className="thumbnail_img" src={co.follower_image_url} thumbnail />}
                         </a>
                       </OverlayTrigger>
                     </li>)}
                   </ul>)}
-            </Scrollbars>
+              </Scrollbars>
+            </div>
           </div>
-        </div>        
+
+          {/* Show only when total followers are more than 4 */}
+          <div className={total_followers > 4 ? null: "d-none"}>
+            <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button>
+            <div className="collapsible-content">
+              <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
+                renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                {follower_user_grid.map(ro =>
+                  <ul className="logo-list"> {ro.map(co =>
+                    <li>
+                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.follower_name}</Tooltip>}>
+                        <a href={co.follower_handle} target="_blank" rel="noopener noreferrer">
+                          {/* {(co.image === "" || co.image === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />} */}
+                          {(co.follower_image_url === "" || co.follower_image_url === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />}
+                          {/* {(co.image !== "" && co.image !== null) && <Image className="thumbnail_img" src={co.image} thumbnail />} */}
+                          {(co.follower_image_url !== "" && co.follower_image_url !== null) && <Image className="thumbnail_img" src={co.follower_image_url} thumbnail />}
+                        </a>
+                      </OverlayTrigger>
+                    </li>)}
+                  </ul>)}
+              </Scrollbars>
+            </div>
+          </div>
+
+        </div>
 
         <div>
-          {total_following > 4 && <button className="collapsible-b" onClick={this.toggleFollowingLabel}>{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button>}
-          {1 <= total_following && total_following <= 4 && <button className="collapsible-b">Followers</button>}
-          {total_following === 0 && <button className="collapsible-b">No Followers</button>}
-
-          {/* <button className="collapsible-b" onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button> */}
-            {/* <div>
-              <Row>
-                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
-              </Row>
-            </div> */}
-
-          <div className="collapsible-content">
-            <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
-              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
-              {following_user_grid.map(ro =>
+          {/* Show only when total following is 0 */}
+          {total_following === 0 && <button className="collapsible-b">No Following</button>}
+          {/* Show only when total following is 1 to 4 */}
+          <div className={1 <= total_following && total_following <= 4 ? null: "d-none"}>
+            <button className="collapsible-b">Following</button>
+            <div className="collapsible-content">
+              <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
+                renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                {following_user_grid.map(ro =>
                   <ul className="logo-list"> {ro.map(co =>
                     <li>
-                      {/* <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}> */}
                       <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.followed_name}</Tooltip>}>
-                        <a href={co.image} target="_blank" rel="noopener noreferrer">
-                          {/* <Image className="thumbnail_img" src={co.image} thumbnail /> */}
-                          <Image className="thumbnail_img" src={co.followed_image_url} thumbnail />
+                        <a href={co.followed_handle} target="_blank" rel="noopener noreferrer">
+                          {/* {(co.image === "" || co.image === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />} */}
+                          {(co.followed_image_url === "" || co.followed_image_url === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />}
+                          {/* {(co.image !== "" && co.image !== null) && <Image className="thumbnail_img" src={co.image} thumbnail />} */}
+                          {(co.followed_image_url !== "" && co.followed_image_url !== null) && <Image className="thumbnail_img" src={co.followed_image_url} thumbnail />}
                         </a>
                       </OverlayTrigger>
                     </li>)}
                   </ul>)}
-            </Scrollbars>
+              </Scrollbars>
+            </div>
           </div>
-        </div>        
 
+          {/* Show only when total following is greater than 4 */}
+          <div className={total_following > 4 ? null: "d-none"}>
+            <button className="collapsible-b" onClick={this.toggleFollowingLabel}>{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button>
+            <div className="collapsible-content">
+              <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
+                renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
+                {following_user_grid.map(ro =>
+                  <ul className="logo-list"> {ro.map(co =>
+                    <li>
+                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.followed_name}</Tooltip>}>
+                        <a href={co.followed_handle} target="_blank" rel="noopener noreferrer">
+                          {/* {(co.image === "" || co.image === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />} */}
+                          {(co.followed_image_url === "" || co.followed_image_url === null) && <Image className="thumbnail_img" src={user_silhouette} thumbnail />}
+                          {/* {(co.image !== "" && co.image !== null) && <Image className="thumbnail_img" src={co.image} thumbnail />} */}
+                          {(co.followed_image_url !== "" && co.followed_image_url !== null) && <Image className="thumbnail_img" src={co.followed_image_url} thumbnail />}
+                        </a>
+                      </OverlayTrigger>
+                    </li>)}
+                  </ul>)}
+              </Scrollbars>
+            </div>
+          </div>
+
+        </div>
 
       </div>
     );

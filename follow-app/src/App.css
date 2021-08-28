@@ -174,7 +174,8 @@ ul{
   display: inline-block;
   list-style: none outside;
   vertical-align: top;
-  text-align: left;
+  /* text-align: left; */
+  text-align: center;
   /* set margin according to iframe size*/
   margin-bottom: 0.41em !important;
 }
