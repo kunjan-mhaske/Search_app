@@ -1,14 +1,10 @@
 import { Component, React } from 'react';
 import RecordDataService from "../services/record.service.js";
 
-// CSS styles
-// import { styles } from "../css-common"
-import { withStyles } from '@material-ui/core/styles';
-import { Scrollbars } from 'react-custom-scrollbars';
-
 import user_silhouette from '../user_silhouette.jpg';
 
-import { Container, Row, Col, Image, OverlayTrigger, Button, Tooltip } from 'react-bootstrap';
+import { Scrollbars } from 'react-custom-scrollbars';
+import { Image, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 class FollowGrid extends Component {
   constructor(props) {
@@ -351,64 +347,12 @@ class FollowGrid extends Component {
     const { total_following, total_followers, toggleLabel1, toggleLabel2 } = this.state;
     return (
       <div>
-        {/* <div>
-              <Row>
-                {follower_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
-              </Row>
-            </div> */}
-
-        {/* <div>
-              <Row>
-                {following_top_users.map(co => <Col> <a href="#"> <Image className="thumbnail_img" src={co.image} thumbnail/> </a></Col>)}
-              </Row>
-            </div> */}
-
-        {/* <div>
-          <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button>
-          <div className="collapsible-content">
-            <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="400px"
-              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
-              {follower_user_grid.map(ro =>
-                <Row>
-                  {ro.map(co =>
-                    <Col>
-                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
-                        <a href={co.image} target="_blank" rel="noopener noreferrer">
-                          <Image className="thumbnail_img" src={co.image} thumbnail />
-                        </a>
-                      </OverlayTrigger>
-                    </Col>)}
-                </Row>)}
-            </Scrollbars>
-          </div>
-        </div>
-
-        <div>
-          <button className="collapsible-b" onClick={this.toggleFollowingLabel} >{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button>
-          <div className="collapsible-content">
-            <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="400px"
-              renderTrackHorizontal={({ style, ...props }) => <div {...props} style={{ ...style }} />}>
-              {following_user_grid.map(ro =>
-                <Row>
-                  {ro.map(co =>
-                    <Col>
-                      <OverlayTrigger id="overlay-id" placement="auto-end" overlay={<Tooltip id="name-tooltip">{co.name}</Tooltip>}>
-                        <a href={co.image} target="_blank" rel="noopener noreferrer">
-                          <Image className="thumbnail_img" src={co.image} thumbnail />
-                        </a>
-                      </OverlayTrigger>
-                    </Col>)}
-                </Row>)}
-            </Scrollbars>
-          </div>
-        </div> */}
-
         {/* Logos generated as list elements */}
         <div>
           {/* Show only when total followers are 0 */}
           {total_followers === 0 && <button className="collapsible-b">No Followers</button>}
           {/* Show only when total followers are 1 to 4 */}
-          <div className={1 <= total_followers && total_followers <= 4 ? null: "d-none"}>
+          <div className={1 <= total_followers && total_followers <= 4 ? null : "d-none"}>
             <button className="collapsible-b">Followers</button>
             <div className="collapsible-content">
               <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
@@ -431,7 +375,7 @@ class FollowGrid extends Component {
           </div>
 
           {/* Show only when total followers are more than 4 */}
-          <div className={total_followers > 4 ? null: "d-none"}>
+          <div className={total_followers > 4 ? null : "d-none"}>
             <button className="collapsible-b" onClick={this.toggleFollowerLabel}>{toggleLabel2} {toggleLabel2 === "See" ? total_followers : null} Followers</button>
             <div className="collapsible-content">
               <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
@@ -459,7 +403,7 @@ class FollowGrid extends Component {
           {/* Show only when total following is 0 */}
           {total_following === 0 && <button className="collapsible-b">No Following</button>}
           {/* Show only when total following is 1 to 4 */}
-          <div className={1 <= total_following && total_following <= 4 ? null: "d-none"}>
+          <div className={1 <= total_following && total_following <= 4 ? null : "d-none"}>
             <button className="collapsible-b">Following</button>
             <div className="collapsible-content">
               <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"
@@ -482,7 +426,7 @@ class FollowGrid extends Component {
           </div>
 
           {/* Show only when total following is greater than 4 */}
-          <div className={total_following > 4 ? null: "d-none"}>
+          <div className={total_following > 4 ? null : "d-none"}>
             <button className="collapsible-b" onClick={this.toggleFollowingLabel}>{toggleLabel1} {toggleLabel1 === "See" ? total_following : null} Following</button>
             <div className="collapsible-content">
               <Scrollbars autoHide autoHeight autoHeightMin="0px" autoHeightMax="350px"

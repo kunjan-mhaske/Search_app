@@ -25,11 +25,11 @@ const Op = db.Sequelize.Op;
 // Retrieve all followers and followed both in single query
 exports.findAllFollowersAndFollowings = (req, res) => {
   const user_email = req.query.user_email;
-  var condition = { 
-        [Op.or]: [ {"followed_email": user_email}, {"follower_email": user_email}],
-        display_followed: 1,
-        display_follower: 1
-                  };
+  var condition = {
+    [Op.or]: [{ "followed_email": user_email }, { "follower_email": user_email }],
+    display_followed: 1,
+    display_follower: 1
+  };
   // Get results in descending order of datetime (lastest follower)
   const ordering = [['date_time', 'DESC']];
 
@@ -50,11 +50,11 @@ exports.findAllFollowersAndFollowings = (req, res) => {
 // retrieve all records of followers without pagination
 exports.findAllFollowers = (req, res) => {
   const user_email = req.query.user_email;
-  var condition = { 
-        followed_email: user_email,
-        display_followed: 1,
-        display_follower: 1
-                  };
+  var condition = {
+    followed_email: user_email,
+    display_followed: 1,
+    display_follower: 1
+  };
   // Get results in descending order of datetime (lastest follower)
   const ordering = [['date_time', 'DESC']];
 
@@ -73,16 +73,16 @@ exports.findAllFollowers = (req, res) => {
 
 // retrieve all records of followings without pagination
 exports.findAllFollowings = (req, res) => {
-    const user_email = req.query.user_email;
-    var condition = { 
-          follower_email: user_email,
-          display_followed: 1,
-          display_follower: 1
-                    };
-    // Get results in descending order of datetime (lastest follower)
-    const ordering = [['date_time', 'DESC']];
+  const user_email = req.query.user_email;
+  var condition = {
+    follower_email: user_email,
+    display_followed: 1,
+    display_follower: 1
+  };
+  // Get results in descending order of datetime (lastest follower)
+  const ordering = [['date_time', 'DESC']];
 
-    FollowersControl.findAll({ where: condition, order: ordering })
+  FollowersControl.findAll({ where: condition, order: ordering })
     .then(data => {
       const response = data;
       res.send(response);
